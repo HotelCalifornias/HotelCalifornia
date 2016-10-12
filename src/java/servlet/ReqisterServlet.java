@@ -1,25 +1,27 @@
-package servlet;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Login;
+import model.Register;
 
 /**
  *
- * @author PT
+ * @author int303
  */
-public class LoginServlet extends HttpServlet {
+public class ReqisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,27 +33,25 @@ public class LoginServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-       
-        Login l = new Login();
-        HttpSession session = request.getSession(true);
-        List<Login> ll = Login.UserLogin(username, password);
-        if(l.checkLogin(username, password)){
-            request.setAttribute("Success", ll);
-            if(session.getAttribute("login") == null){
-                session.setAttribute("login", ll);
+        String email = request.getParameter("email");
+        String tel = request.getParameter("tel");
+        String message = "";
+        if (fname != null && lname != null && username != null && password != null && email != null & tel != null) {
+            
+            HttpSession session = request.getSession(true);
+            try {
+                int r = Register.signUp(username, password, fname, lname, email, tel);
+                message = "Register Success!";
+                request.setAttribute("message", message);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ReqisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            else if(session.getAttribute("login") == null && session.getAttribute("login") == ""){
-                session.removeAttribute("login");
-            }
-        }
-        else{
-             request.setAttribute("message", "Fail");
-//            if(session.getAttribute("login") != null){
-//                session.removeAttribute("login");
-//            }
         }
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
@@ -68,7 +68,11 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReqisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -82,7 +86,11 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReqisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

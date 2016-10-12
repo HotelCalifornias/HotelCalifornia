@@ -60,7 +60,7 @@ public class Login {
         
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from login where username = ? and password = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from account where username = ? and password = ?");
             pstm.setString(1, paramU);
             pstm.setString(2, paramP);
             ResultSet rs = pstm.executeQuery();
@@ -84,7 +84,7 @@ public class Login {
         Connection conn = ConnectionBuilder.getCon();
         boolean check = false ;
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from login where username = ? and password = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from account where username = ? and password = ?");
             pstm.setString(1, username);
             pstm.setString(2, password);
             ResultSet rs = pstm.executeQuery();
@@ -116,11 +116,10 @@ public class Login {
 //        l.checkLogin("pentai","123456");
 //        System.out.println(l);
         Login l = new Login();
-        if(l.checkLogin("", "")){
+        if(l.checkLogin("admin", "12345")){
+            List<Login> ll = Login.UserLogin("admin", "12345");
             System.out.println("เข้าสู่ระบบสำเร็จ");
-            System.out.println(l.getId());
-            System.out.println(l.getUsername());
-            System.out.println(l.getPassword());
+            System.out.println(ll);
         }
         else{
             System.out.println("พาสเวิร์ดหรือชื่อผู้ใช้ผิด");
