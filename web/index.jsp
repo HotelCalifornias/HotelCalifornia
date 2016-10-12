@@ -48,15 +48,15 @@
                             <li class="dropdown-header text-center" style="font-size:2em;">Login</li>
                             <li>                               
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                        <form class="form" role="form">
+                                    <div class="col-xs-12">                                     
+                                       <form action="LoginServlet" class="form" role="form" method="get">
                                             <div class="form-group" id="group">
                                                 <label for="usr">Username : </label>
-                                                <input type="text" class="form-control" placeholder="Username"/>                                       
+                                                <input type="text" class="form-control" name="username" placeholder="Username"/>                                       
                                             </div>
                                             <div class="form-group" id="group">
                                                 <label for="pwd">Password : </label>
-                                                <input type="password" class="form-control" placeholder="Password"/>
+                                                <input type="password" class="form-control" name="password" placeholder="Password"/>
                                             </div>
                                             <div class="form-group" id="group">
                                                 <button type="submit" class="btn btn-primary btn-block">Login</button>
