@@ -60,11 +60,11 @@ public class Login {
         
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from account where username = ? and password = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from login where username = ? and password = ?");
             pstm.setString(1, paramU);
             pstm.setString(2, paramP);
             ResultSet rs = pstm.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 l = new Login(rs);
                 if(user == null){
                     user = new ArrayList();
@@ -84,11 +84,12 @@ public class Login {
         Connection conn = ConnectionBuilder.getCon();
         boolean check = false ;
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from account where username = ? and password = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from login where username = ? and password = ?");
             pstm.setString(1, username);
             pstm.setString(2, password);
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
+            if(rs.next()){
+                //if(username.equals(rs.getString("username")) && password.equals(rs.getString("password"))){
                 if(username.equals(rs.getString("username")) && password.equals(rs.getString("password"))){
                     check = true;
                 }

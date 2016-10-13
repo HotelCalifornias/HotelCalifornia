@@ -18,7 +18,7 @@ public class ConnectionBuilder {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/TestDB","int303","int303");          
+            conn = DriverManager.getConnection("jdbc:mysql://db4free.net/pentai?","penthaizza","123456");          
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -5,7 +5,6 @@ package servlet;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -34,28 +33,31 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-       
+        
         Login l = new Login();
         HttpSession session = request.getSession(true);
         List<Login> ll = Login.UserLogin(username, password);
-        if(l.checkLogin(username, password)){
-            request.setAttribute("Success", ll);
-            if(session.getAttribute("login") == null){
+        
+        if(session.getAttribute("login") == null){
+            if(l.checkLogin(username, password)){
                 session.setAttribute("login", ll);
-            }
-            else if(session.getAttribute("login") == null && session.getAttribute("login") == ""){
-                session.removeAttribute("login");
+                request.setAttribute("Success", ll);
             }
         }
-        else{
-             request.setAttribute("message", "Fail");
-//            if(session.getAttribute("login") != null){
+ 
+//        if (l.checkLogin(username, password)) {
+//            if (session.getAttribute("login") == null) {
+//                session.setAttribute("login", ll);
+//                request.setAttribute("Success", ll);
+//            }
+//        } else if(!l.checkLogin(username, password)) {
+//            request.setAttribute("message", "Fail");
+//            if (session.getAttribute("login") != null) {
 //                session.removeAttribute("login");
 //            }
-        }
+//        }
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
