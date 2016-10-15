@@ -94,9 +94,8 @@
                     </c:choose>
                 </div>
             </nav>
-            <br><br>
         
-            <h1>${sessionScope.login}</h1>
+            
         <!-- Modal Profile -->
         <div class="modal fade" id="ProfileModal" role="dialog">
             <div class="modal-dialog">
@@ -120,21 +119,17 @@
             <div class="modal-dialog">
                 <!-- Content -->
                 <div class="modal-content">
-                    <form action="/RegisterServlet" method="post">
+                    <form action="RegisterServlet" method="post">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h3 class="modal-title text-center">Sign Up</h3>
                         </div>
                         <div class="modal-body">        
                             <div class="form-group">
-                                <label>Name :</label>
-                                <input type="text" class="form-control" name="fname">
+                                <label>ID :</label>
+                                <input type="text" class="form-control" name="id">
                             </div>
-                            <div class="form-group">
-                                <label>Surname :</label>
-                                <input type="text" class="form-control" name="lname">
-                            </div>
-
+                            
                             <div class="form-group">
                                 <label>Username :</label>
                                 <input type="text" class="form-control" name="username">
@@ -143,14 +138,7 @@
                                 <label>Password :</label>
                                 <input type="text" class="form-control" name="password">
                             </div>
-                            <div class="form-group">
-                                <label>E-mail :</label>
-                                <input type="text" class="form-control" name="email">
-                            </div>
-                            <div class="form-group">
-                                <label>Tel :</label>
-                                <input type="text" class="form-control" name="tel">
-                            </div>
+                            
                         </div>
                         <div class="modal-footer">
                             <div class="form-group">
@@ -162,6 +150,10 @@
                 </div>
             </div>
         </div>
+                </div>
+                <br><br>
+                <div class="container-fluid">
+                    <h1>${sessionScope.login}</h1>
                 </div>
     </body>
 </html>

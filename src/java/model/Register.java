@@ -87,16 +87,15 @@ public class Register {
         return "Register{" + "username=" + username + ", password=" + password + ", repassword=" + repassword + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", tel=" + tel + '}';
     }
 
-    public static int signUp(String username, String password, String fname, String lname, String email, String tel) throws ClassNotFoundException, SQLException {
+    
+
+    public static int signUp(int id,String username, String password) throws ClassNotFoundException, SQLException {
         Connection con = ConnectionBuilder.getCon();
-        PreparedStatement pst = con.prepareStatement("insert into account (username,password,fname,lname,email,tel) values (?,?,?,?,?,?)");
+        PreparedStatement pst = con.prepareStatement("insert into login (id,username,password) values (?,?,?)");
         
-        pst.setString(1, username);
-        pst.setString(2, password);
-        pst.setString(3, fname);
-        pst.setString(4, lname);
-        pst.setString(5, email);
-        pst.setString(6, tel);
+        pst.setInt(1, id);
+        pst.setString(2, username);
+        pst.setString(3, password);
         return pst.executeUpdate();
     }
 
