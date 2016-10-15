@@ -5,8 +5,8 @@
         <servlet-class>servlet.LoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ReqisterServlet</servlet-name>
-        <servlet-class>servlet.ReqisterServlet</servlet-class>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>servlet.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
@@ -17,8 +17,8 @@
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ReqisterServlet</servlet-name>
-        <url-pattern>/ReqisterServlet</url-pattern>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>

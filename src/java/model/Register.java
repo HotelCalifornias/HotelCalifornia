@@ -25,79 +25,95 @@ public class Register {
 
     public Register() {
     }
-
-    public String getUsername() {
-        return username;
+    
+    public Register(String username, String password, String repassword, String fname, String lname, String email, String tel){
+      this.username = username;
+      this.password = password;
+      this.repassword = repassword;
+      this.fname = fname;
+      this.lname = lname;
+      this.email = email;
+      this.tel = tel;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String username){
+      this.username = username;
+    }
+    
+    public String getUsername(){
+      return this.username;
+    }
+    
+    public void setPassword(String password){
+      this.password = password;
+    }
+    
+    public String getPassword(){
+      return this.password;
+      
+      
     }
 
-    public String getPassword() {
-        return password;
-    }
+  public String getRepassword() {
+    return repassword;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setRepassword(String repassword) {
+    this.repassword = repassword;
+  }
 
-    public String getRepassword() {
-        return repassword;
-    }
+  public String getFname() {
+    return fname;
+  }
 
-    public void setRepassword(String repassword) {
-        this.repassword = repassword;
-    }
+  public void setFname(String fname) {
+    this.fname = fname;
+  }
 
-    public String getFname() {
-        return fname;
-    }
+  public String getLname() {
+    return lname;
+  }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
+  public void setLname(String lname) {
+    this.lname = lname;
+  }
 
-    public String getLname() {
-        return lname;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getTel() {
+    return tel;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setTel(String tel) {
+    this.tel = tel;
+  }
 
-    public String getTel() {
-        return tel;
-    }
+  @Override
+  public String toString() {
+    return "Register{" + "username=" + username + ", password=" + password + ", repassword=" + repassword + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", tel=" + tel + '}';
+  }
+    
+    
 
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
+ 
 
-    @Override
-    public String toString() {
-        return "Register{" + "username=" + username + ", password=" + password + ", repassword=" + repassword + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", tel=" + tel + '}';
-    }
-
-    public static int signUp(String username, String password, String fname, String lname, String email, String tel) throws ClassNotFoundException, SQLException {
+    public static int signUp(int id,String username, String password) throws ClassNotFoundException, SQLException {
         Connection con = ConnectionBuilder.getCon();
-        PreparedStatement pst = con.prepareStatement("insert into account (username,password,fname,lname,email,tel) values (?,?,?,?,?,?)");
+        PreparedStatement pst = con.prepareStatement("insert into login (id,username,password) values (?,?,?)");
         
-        pst.setString(1, username);
-        pst.setString(2, password);
-        pst.setString(3, fname);
-        pst.setString(4, lname);
-        pst.setString(5, email);
-        pst.setString(6, tel);
+        pst.setInt(1, id);
+        pst.setString(2, username);
+        pst.setString(3, password);
         return pst.executeUpdate();
+        
     }
+    
+  }
 
-}
+
