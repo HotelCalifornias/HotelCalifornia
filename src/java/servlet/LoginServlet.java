@@ -39,11 +39,15 @@ public class LoginServlet extends HttpServlet {
         List<Login> ll = Login.UserLogin(username, password);
         
         if(session.getAttribute("login") == null){
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+            response.setDateHeader("Expires", 0);
             if(l.checkLogin(username, password)){
                 session.setAttribute("login", ll);
                 request.setAttribute("Success", ll);
             }
         }
+
  
 //        if (l.checkLogin(username, password)) {
 //            if (session.getAttribute("login") == null) {
