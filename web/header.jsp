@@ -36,8 +36,8 @@
                                                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                                                         </div>
                                                     </form>
-                                                    <h3><%=request.getAttribute("message")%></h3>
-                                                    <h3><%=request.getAttribute("Success")%></h3>
+                                                    <h3>${message}</h3>
+                                                    <h3>${Success}</h3>
                                                 </div>
                                             </div>
                                         </li>
