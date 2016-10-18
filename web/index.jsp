@@ -13,9 +13,14 @@
         <title>HomePage</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Slick -->
+        <link rel="stylesheet" type="text/css" href="slick-1.6.0/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="slick-1.6.0/slick/slick-theme.css"/>
+
         <style>
             #login-dp{
                 min-width: 44vh;
@@ -24,12 +29,41 @@
             #login-dp .form-group{
                 margin-bottom: 20px;      
             }
-            body{
-                font-size: 1.6em;
+            .fullwidth {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: initial;
+            }
+            .slider {
+                margin: 0;
+            }
+            .slider .slide {
+                width: 100%; 
+                height: 100%;
+            }
+            .slider .slide img{
+                width: 100%;
+                max-height: 80vh;
+                min-height: 45vh;
+            }
+
+            .slick-prev {
+                z-index: 1;
+                left: 0;
+            }
+            .slick-next {
+                z-index: 1;
+                right: 0;
+            }
+            .slick-dots {
+                bottom: 0px;
+                margin-left: 10;
             }
         </style>
     </head>
     <body>
+<<<<<<< HEAD
         <div class="container-fluid">
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container-fluid  text-center">
@@ -109,10 +143,19 @@
                         <h3>${sessionScope.login}</h3><br>
                     </div>
                     <div class="modal-footer">
+=======
+        <jsp:include page="header.jsp"></jsp:include>
+>>>>>>> d5bb4e82cdbf71e210c36b1e7186610daa353961
 
-                    </div>
+            <div class="row fullwidth ">
+                <div class="slider ">
+                    <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/47/90/jB4KV1.jpg"/></div>
+                    <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/54/26/Z6ioh9.jpg"/></div>
+                    <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/55/67/puqkWI.jpg"/></div>
+                    <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/55/67/puqkWI.jpg"/></div>
                 </div>
             </div>
+<<<<<<< HEAD
         </div>
         <!-- Modal SignUp -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -155,5 +198,53 @@
                 <div class="container-fluid">
                     <h1>${sessionScope.login}</h1>
                 </div>
+=======
+            <div class="container-fluid">
+                <h1>${sessionScope.login}</h1>
+            </div>
+
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="slick-1.6.0/slick/slick.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.slider').slick({
+                    dots: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    responsive: [
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                infinite: true,
+                                dots: true,
+                                arrows: true
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                arrows: false,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                arrows: false,
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }]
+                });
+            });
+        </script>
+>>>>>>> d5bb4e82cdbf71e210c36b1e7186610daa353961
     </body>
 </html>
