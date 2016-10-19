@@ -21,6 +21,10 @@
         <link rel="stylesheet" type="text/css" href="slick-1.6.0/slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="slick-1.6.0/slick/slick-theme.css"/>
 
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" 
+              rel="stylesheet" 
+              integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
+              crossorigin="anonymous"/>
         <style>
             #login-dp{
                 min-width: 44vh;
@@ -45,7 +49,7 @@
             }
             .slider .slide img{
                 width: 100%;
-                max-height: 80vh;
+                max-height: 100vh;
                 min-height: 45vh;
             }
 
@@ -56,10 +60,6 @@
             .slick-next {
                 z-index: 1;
                 right: 0;
-            }
-            .slick-dots {
-                bottom: 0px;
-                margin-left: 10;
             }
 
             #custom-nav.affix {
@@ -75,96 +75,149 @@
                 color: #fff;
             }
             #hovernav:hover{
-                color: #98ff98;
+                color: #179b77;
                 opacity: 1; 
+            }
+            .icon-bar{
+                background-color: #fff;
+            }
+            .btn-circle {
+                width: 70px;
+                height: 70px;
+                margin-top: 15px;
+                padding: 7px 16px;
+                border: 3px solid #fff;
+                border-radius: 100%!important;
+                font-size: 40px;
+                color: #fff;
+                background: rgba(255,255,255,0);
+            }
+            .bot{
+                position:absolute;
+                width:100px;
+                height:100px;
+                left:50%;
+                top:90%;
+                margin-left:-50px;
+                margin-top:-50px;
             }
         </style>
     </head>
     <body id="page-top">
         <jsp:include page="header.jsp"></jsp:include>
-            <div class="fullwidth ">
-                <div class="slider ">
-                    <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/47/90/jB4KV1.jpg"/></div>
-                    <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/54/26/Z6ioh9.jpg"/></div>
-                    <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/55/67/puqkWI.jpg"/></div>
-                    <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/55/67/puqkWI.jpg"/></div>
-                </div>
-            </div> 
+        <div class="fullwidth ">
             <div class="container-fluid">
-                <h1>${sessionScope.login}</h1>
+                <div class="row">
+                    <div class="slider ">
+                        <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/47/90/jB4KV1.jpg"/></div>
+                        <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/54/26/Z6ioh9.jpg"/></div>
+                        <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/55/67/puqkWI.jpg"/></div>
+                        <div class="text-center slide"><img src="https://jsis.washington.edu/wordpress/wp-content/uploads/2016/02/world-1138035_1280.jpg"/></div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 bot">    
+                        <a href="#bot" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
-        <h1>A</h1>
+        <br id="bot">
+        <br>
+        <div class="container text-center">
+            <h1>Search</h1>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4 col-md-offset-4 well">
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                    <p>A</p>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick-1.6.0/slick/slick.min.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(".navbar").offset().top > 30) {
+                $('#custom-nav').addClass('affix');
+                $(".navbar-fixed-top").addClass("top-nav-collapse");
+            } else {
+                $('#custom-nav').removeClass('affix');
+                $(".navbar-fixed-top").removeClass("top-nav-collapse");
+            }
+        });
+        $(document).ready(function () {
+            $('.slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                responsive: [
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            arrows: true
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1
 
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="slick-1.6.0/slick/slick.min.js"></script>
-        <script>
-            $(window).scroll(function () {
-                if ($(".navbar").offset().top > 30) {
-                    $('#custom-nav').addClass('affix');
-                    $(".navbar-fixed-top").addClass("top-nav-collapse");
-                } else {
-                    $('#custom-nav').removeClass('affix');
-                    $(".navbar-fixed-top").removeClass("top-nav-collapse");
-                }
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }]
             });
-            $(document).ready(function () {
-                $('.slider').slick({
-                    dots: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    autoplaySpeed: 3000,
-                    responsive: [
-                        {
-                            breakpoint: 992,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1,
-                                infinite: true,
-                                dots: true,
-                                arrows: true
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                arrows: false,
-                                slidesToShow: 1,
-                                slidesToScroll: 1
+            $('a[href^="#"]').on('click', function (e) {
+                e.preventDefault();
 
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                arrows: false,
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        }]
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 2000, 'swing', function () {
+                    window.location.hash = target;
                 });
             });
-            
-        </script>
-    </body>
+        });
+
+    </script>
 </html>
