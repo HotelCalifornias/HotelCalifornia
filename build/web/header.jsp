@@ -9,19 +9,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="hovernav" href="#" class="navbar-brand page-scroll">Brand</a>
+            <a id="hovernav" href="/Hotel" class="navbar-brand page-scroll hvr-underline-from-left">Brand</a>
         </div>
         <c:choose>
             <c:when test="${sessionScope.login == null}">
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a id="hovernav" href="#" data-toggle="modal" data-target="#myModal">
+                            <a class="hvr-underline-from-left" id="hovernav" href="#" data-toggle="modal" data-target="#myModal">
                                 <span class="glyphicon glyphicon-user"></span>  Sign Up
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a id="hovernav" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <a class="hvr-underline-from-left" id="hovernav" class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <span class="glyphicon glyphicon-log-in"></span>  Login
                             </a>
                             <ul class="dropdown-menu" id="login-dp">
@@ -54,12 +54,12 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a id="hovernav" href="#" data-toggle="modal" data-target="#ProfileModal">
+                            <a class="hvr-underline-from-left" id="hovernav" href="#" data-toggle="modal" data-target="#ProfileModal">
                                 <span class="glyphicon glyphicon-user"></span>  Profile
                             </a>
                         </li>
                         <li>
-                            <a id="hovernav" href="LogoutServlet">  
+                            <a class="hvr-underline-from-left" id="hovernav" href="LogoutServlet">  
                                 <form action='LogoutServlet' method="post">                       
                                     <span class="glyphicon glyphicon-log-out"></span>  Logout                          
                                 </form>

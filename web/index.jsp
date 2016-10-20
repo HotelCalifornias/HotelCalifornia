@@ -20,11 +20,13 @@
         <!-- Slick -->
         <link rel="stylesheet" type="text/css" href="slick-1.6.0/slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="slick-1.6.0/slick/slick-theme.css"/>
-
+        <!-- Font-awesome -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" 
               rel="stylesheet" 
               integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" 
               crossorigin="anonymous"/>
+        <!-- hover.css -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/hover.css/2.0.2/hover-min.css">
         <style>
             #login-dp{
                 min-width: 44vh;
@@ -64,10 +66,10 @@
                 width: 100px;
             }
             .slick-prev:before{
-                font-size: 50px;
+                font-size: 45px;
             }
             .slick-next:before{
-                font-size: 50px;
+                font-size: 45px;
             }
             #custom-nav.affix {
                 min-width: 100%;
@@ -107,6 +109,9 @@
                 top:90%;
                 margin-left:-50px;
                 margin-top:-50px;
+            }
+            .hvr-underline-from-left:before{
+                background: #179b77;
             }
         </style>
     </head>
@@ -220,7 +225,7 @@
 
                 $('html, body').stop().animate({
                     'scrollTop': $target.offset().top
-                }, 2000, 'swing', function () {
+                }, 1800, 'swing', function () {
                     window.location.hash = target;
                 });
             });
