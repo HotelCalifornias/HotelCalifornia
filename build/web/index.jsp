@@ -56,12 +56,19 @@
             .slick-prev {
                 z-index: 1;
                 left: 0;
+                width: 100px;
             }
             .slick-next {
                 z-index: 1;
                 right: 0;
+                width: 100px;
             }
-
+            .slick-prev:before{
+                font-size: 50px;
+            }
+            .slick-next:before{
+                font-size: 50px;
+            }
             #custom-nav.affix {
                 min-width: 100%;
                 background-color: black;
