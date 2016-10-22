@@ -24,7 +24,7 @@
                             <a class="hvr-underline-from-left" id="hovernav" class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <span class="glyphicon glyphicon-log-in"></span>  Login
                             </a>
-                            <ul class="dropdown-menu" id="login-dp">
+                            <ul class="dropdown-menu animated zoomIn" id="login-dp">
                                 <li class="dropdown-header text-center" style="font-size: 1.8em">Login</li>
                                 <li>                               
                                     <div class="row">

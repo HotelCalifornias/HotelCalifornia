@@ -27,6 +27,8 @@
               crossorigin="anonymous"/>
         <!-- hover.css -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/hover.css/2.0.2/hover-min.css">
+        <!-- animate.css -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.2/animate.min.css">
         <style>
             #login-dp{
                 min-width: 44vh;
@@ -100,6 +102,8 @@
                 font-size: 40px;
                 color: #fff;
                 background: rgba(255,255,255,0);
+                -webkit-transition: background .5s;
+                transition: background .5s;
             }
             .bot{
                 position:absolute;
@@ -113,6 +117,25 @@
             .hvr-underline-from-left:before{
                 background: #179b77;
             }
+            .btn:hover{
+                color: #179b77;
+                background-color: rgba(255,255,255,.2);
+            }
+            .search{
+                background-color: rgba(19,35,47,.9);
+                color: #fff;
+                box-shadow:0 4px 10px 4px rgba(19,35,47,.3);
+                border-radius:4px;
+                padding: 40px;
+            }
+            .submitserach{
+                background-color: #179b77;
+            }
+            .submitserach:hover{
+                background-color: #179b77;
+                color: #fff;
+                border-color: #179b77;
+            }
         </style>
     </head>
     <body id="page-top">
@@ -121,12 +144,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="slider ">
-                        <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/47/90/jB4KV1.jpg"/></div>
-                        <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/54/26/Z6ioh9.jpg"/></div>
-                        <div class="text-center slide"><img src="http://cdn.wallpapersafari.com/55/67/puqkWI.jpg"/></div>
-                        <div class="text-center slide"><img src="https://jsis.washington.edu/wordpress/wp-content/uploads/2016/02/world-1138035_1280.jpg"/></div>
+                        <div class="text-center slide"><img src="https://assetcdn.500px.org/assets/photos/discovery_1200-6320000a7c93bf8c7d90431d048a9221.jpg"/></div>
+                        <div class="text-center slide"><img src="https://iso.500px.com/wp-content/uploads/2015/03/78498a1c651e93a1be10ee1c4ea279bd.jpeg"/></div>                       
+                        <div class="text-center slide"><img src="https://iso.500px.com/wp-content/uploads/2015/10/500px-wallpaper-desktop1.jpg"/></div>
+                        <div class="text-center slide"><img src="https://iso.500px.com/wp-content/uploads/2014/12/iPad_1-1500x1000.jpg"/></div>
                     </div>
-                    <div class="col-md-8 col-md-offset-2 bot">    
+                    <div class="hidden-sm hidden-xs col-md-8 col-md-offset-2 bot">    
                         <a href="#bot" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
@@ -136,38 +159,41 @@
         </div>
         <br id="bot">
         <br>
-        <div class="container text-center">
-            <h1>Search</h1>
-            <br>
+        <br>
+        <br>
+        <div class="container">
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+            <h1 class="text-center">Search</h1>
             <br>
             <div class="row">
-                <div class="col-md-offset-4 col-md-4 col-md-offset-4 well">
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
-                    <p>A</p>
+                <div class="col-md-offset-3 col-md-6 col-md-offset-3 search">
+                    <form class="form">
+                        <div class="form-group">
+                            <label>Hotel</label>
+                            <input type="text" class="form-control"/>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Check in</label>
+                            <input type="date" class="form-control"/>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Check out</label>
+                            <input type="date" class="form-control"/>
+                        </div>
+                        <br>
+                        <div class="form-group" id="group">
+                            <button type="submit" class="submitserach btn btn-block">Search</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <br>
+            <br>
         </div>
     </body>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -225,7 +251,7 @@
 
                 $('html, body').stop().animate({
                     'scrollTop': $target.offset().top
-                }, 1800, 'swing', function () {
+                }, 1500, 'swing', function () {
                     window.location.hash = target;
                 });
             });
