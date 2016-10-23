@@ -17,24 +17,51 @@ public class Register {
 
     private String username;
     private String password;
-    private String repassword;
     private String fname;
     private String lname;
     private String email;
-    private String tel;
+    private String address;
+
+    public Register(String username, String password, String fname, String lname, String email, String address, String city, String country) {
+        this.username = username;
+        this.password = password;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.address = address;
+        this.city = city;
+        this.country = country;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+    private String city;
+    private String country;
 
     public Register() {
     }
     
-    public Register(String username, String password, String repassword, String fname, String lname, String email, String tel){
-      this.username = username;
-      this.password = password;
-      this.repassword = repassword;
-      this.fname = fname;
-      this.lname = lname;
-      this.email = email;
-      this.tel = tel;
-    }
 
     public void setUsername(String username){
       this.username = username;
@@ -54,13 +81,9 @@ public class Register {
       
     }
 
-  public String getRepassword() {
-    return repassword;
-  }
+ 
 
-  public void setRepassword(String repassword) {
-    this.repassword = repassword;
-  }
+
 
   public String getFname() {
     return fname;
@@ -86,31 +109,32 @@ public class Register {
     this.email = email;
   }
 
-  public String getTel() {
-    return tel;
-  }
+    @Override
+    public String toString() {
+        return "Register{" + "username=" + username + ", password=" + password + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", address=" + address + ", city=" + city + ", country=" + country + '}';
+    }
 
-  public void setTel(String tel) {
-    this.tel = tel;
-  }
 
-  @Override
-  public String toString() {
-    return "Register{" + "username=" + username + ", password=" + password + ", repassword=" + repassword + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", tel=" + tel + '}';
-  }
-    
+
     
 
  
 
-    public static int signUp(int id,String username, String password) throws ClassNotFoundException, SQLException {
+    public static void signUp(String username, String password, String fname, String lname, String email, String address, String city, String country) throws ClassNotFoundException, SQLException {
         Connection con = ConnectionBuilder.getCon();
-        PreparedStatement pst = con.prepareStatement("insert into login (id,username,password) values (?,?,?)");
+        PreparedStatement pst = con.prepareStatement("insert into account (username,password,fname,lname,email,address,city,country) values (?,?,?,?,?,?,?,?)");
         
-        pst.setInt(1, id);
-        pst.setString(2, username);
-        pst.setString(3, password);
-        return pst.executeUpdate();
+        
+        pst.setString(1, username);
+        pst.setString(2, password);
+        pst.setString(3, fname);
+        pst.setString(4, lname);
+        pst.setString(5, email);
+        pst.setString(6, address);
+        pst.setString(7, city);
+        pst.setString(8, country);
+        pst.executeUpdate();
+        con.close();
         
     }
     

@@ -27,7 +27,6 @@ public class Login {
     private Login(ResultSet rs) throws SQLException{
         this.username = rs.getString("username");
         this.password = rs.getString("password");
-        this.id = rs.getInt("id");
     }
 
     public int getId() {
@@ -60,7 +59,7 @@ public class Login {
         
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from login where username = ? and password = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from account where username = ? and password = ?");
             pstm.setString(1, paramU);
             pstm.setString(2, paramP);
             ResultSet rs = pstm.executeQuery();
@@ -84,7 +83,7 @@ public class Login {
         Connection conn = ConnectionBuilder.getCon();
         boolean check = false ;
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from login where username = ? and password = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from account where username = ? and password = ?");
             pstm.setString(1, username);
             pstm.setString(2, password);
             ResultSet rs = pstm.executeQuery();

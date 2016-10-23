@@ -101,12 +101,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h3 class="modal-title text-center">Sign Up</h3>
                 </div>
-                <div class="modal-body">        
-                    <div class="form-group">
-                        <label>ID :</label>
-                        <input type="text" class="form-control" name="id">
-                    </div>
-
+                <div class="modal-body"> 
                     <div class="form-group">
                         <label>Username :</label>
                         <input type="text" class="form-control" name="username">
@@ -114,6 +109,30 @@
                     <div class="form-group">
                         <label>Password :</label>
                         <input type="text" class="form-control" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label>First Name :</label>
+                        <input type="text" class="form-control" name="fname">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name :</label>
+                        <input type="text" class="form-control" name="lname">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail :</label>
+                        <input type="text" class="form-control" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Address :</label>
+                        <input type="text" class="form-control" name="address">
+                    </div>
+                    <div class="form-group">
+                        <label>City :</label>
+                        <input type="text" class="form-control" name="city">
+                    </div>
+                    <div class="form-group">
+                        <label>Country :</label>
+                        <input type="text" class="form-control" name="country">
                     </div>
 
                 </div>

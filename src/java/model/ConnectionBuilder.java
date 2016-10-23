@@ -18,7 +18,7 @@ public class ConnectionBuilder {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://db4free.net/pentai?","penthaizza","123456");          
+            conn = DriverManager.getConnection("jdbc:mysql://ap-cdbr-azure-southeast-b.cloudapp.net/acsm_6a1a5740a3b05cf?useUnicode=true&characterEncoding=UTF-8","b81eb6dd3c81c4","52b81b4a");          
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

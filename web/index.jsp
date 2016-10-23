@@ -53,6 +53,7 @@
             }
             .slider .slide img{
                 width: 100%;
+                height: 100%;
                 max-height: 100vh;
                 min-height: 45vh;
             }
@@ -170,10 +171,10 @@
             <br>
             <div class="row">
                 <div class="col-md-offset-3 col-md-6 col-md-offset-3 search">
-                    <form class="form">
+                    <form class="form" action="SearchHotelRooms" method="post">
                         <div class="form-group">
                             <label>Hotel</label>
-                            <input type="text" class="form-control"/>
+                            <input type="text" class="form-control" name="searchParam"/>
                         </div>
                         <br>
                         <div class="form-group">
