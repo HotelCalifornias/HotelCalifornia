@@ -53,7 +53,7 @@
             }
             .slider .slide img{
                 width: 100%;
-                height: 100%;
+                height: 100vh;
                 max-height: 100vh;
                 min-height: 45vh;
             }
@@ -129,10 +129,10 @@
                 border-radius:4px;
                 padding: 40px;
             }
-            .submitserach{
+            .submitsearch{
                 background-color: #179b77;
             }
-            .submitserach:hover{
+            .submitsearch:hover{
                 background-color: #179b77;
                 color: #fff;
                 border-color: #179b77;
@@ -171,10 +171,10 @@
             <br>
             <div class="row">
                 <div class="col-md-offset-3 col-md-6 col-md-offset-3 search">
-                    <form class="form" action="SearchHotelRooms" method="post">
+                    <form class="form" action="SearchHotelRooms">
                         <div class="form-group">
                             <label>Hotel</label>
-                            <input type="text" class="form-control" name="searchParam"/>
+                            <input type="text" name="searchParam" class="form-control"/>
                         </div>
                         <br>
                         <div class="form-group">
@@ -188,7 +188,7 @@
                         </div>
                         <br>
                         <div class="form-group" id="group">
-                            <button type="submit" class="submitserach btn btn-block">Search</button>
+                            <button type="submit" class="submitsearch btn btn-block">Search</button>
                         </div>
                     </form>
                 </div>

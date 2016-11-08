@@ -93,7 +93,7 @@ public class SearchHotelRooms {
         this.roomPrice = roomPrice;
     }
 
-    private static final String FIND_BY_NAME = "select * from rooms where roomnumber like ?";
+//    private static final String FIND_BY_NAME = "select * from rooms where roomnumber like ?";
     
     public static List<SearchHotelRooms> findByRoomName(String param) {
         List<SearchHotelRooms> rooms = null;
@@ -101,7 +101,7 @@ public class SearchHotelRooms {
 
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement(FIND_BY_NAME);
+            PreparedStatement pstm = conn.prepareStatement("select * from rooms where roomnumber like ?");
             pstm.setString(1, param + "%");
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
@@ -124,5 +124,9 @@ public class SearchHotelRooms {
     public String toString() {
         return "SearchHotelRooms{" + "roomId=" + roomId + ", roomNumber=" + roomNumber + ", roomType=" + roomType + ", roomFloor=" + roomFloor + ", roomDescription=" + roomDescription + ", roomPrice=" + roomPrice + '}';
     }
-           
+    public static void main(String[] args) {
+        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByRoomName("b");
+        System.out.println(sh);
+    }
+  
 }

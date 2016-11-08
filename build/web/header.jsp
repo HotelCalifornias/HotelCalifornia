@@ -78,12 +78,12 @@
     <div class="modal-dialog">
         <!-- content -->
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #179b77">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title text-center">Profile</h3>
+                <h3 class="modal-title text-center" style="color: #fff">Profile</h3>
             </div>
             <div class="modal-body">
-                <h3>${sessionScope.login}</h3><br>
+                <h3>${login}</h3><br>
             </div>
             <div class="modal-footer">
 
