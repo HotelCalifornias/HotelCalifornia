@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -101,8 +102,38 @@ public class SearchHotelRooms {
 
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from rooms where roomnumber like ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from hotelrooms where roomnumber like ?");
             pstm.setString(1, param + "%");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                r = new SearchHotelRooms(rs);
+                if (rooms == null) {
+                    rooms = new ArrayList();
+                }
+                rooms.add(r);
+            }
+            rs.close();
+            pstm.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return rooms;
+    }
+    
+    public static List<SearchHotelRooms> findByDate(String start, String end){
+        List<SearchHotelRooms> rooms = null;
+        SearchHotelRooms r = null;
+
+        Connection conn = ConnectionBuilder.getCon();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from hotelrooms where roomid not in(select roomid from reservation "
+                    + "where date_from between ? and ? or date_to between ? and ?)");
+            pstm.setString(1,  start);
+            pstm.setString(2,  end);
+            pstm.setString(3,  start);
+            pstm.setString(4,  end);
+            pstm.setString(5,  start);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 r = new SearchHotelRooms(rs);
@@ -122,11 +153,10 @@ public class SearchHotelRooms {
     
     @Override
     public String toString() {
-        return "SearchHotelRooms{" + "roomId=" + roomId + ", roomNumber=" + roomNumber + ", roomType=" + roomType + ", roomFloor=" + roomFloor + ", roomDescription=" + roomDescription + ", roomPrice=" + roomPrice + '}';
+        return "SearchHotelRooms " + "roomId=" + roomId + ", roomNumber=" + roomNumber + ", roomType=" + roomType + ", roomFloor=" + roomFloor + ", roomDescription=" + roomDescription + ", roomPrice=" + roomPrice + '}';
     }
     public static void main(String[] args) {
-        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByRoomName("b");
+        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByDate("2016-11-12","2016-11-13");
         System.out.println(sh);
-    }
-  
+    } 
 }

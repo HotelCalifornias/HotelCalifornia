@@ -33,6 +33,8 @@ public class SearchHotelRoomsServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String param = request.getParameter("searchParam");
+        String start = request.getParameter("start_date");
+        
         if(param == null){
             param = "";
         }

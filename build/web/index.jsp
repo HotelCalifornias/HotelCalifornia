@@ -171,7 +171,7 @@
             <br>
             <div class="row">
                 <div class="col-md-offset-3 col-md-6 col-md-offset-3 search">
-                    <form class="form" action="SearchHotelRooms">
+                    <form class="form" action="SearchHotelRooms" method="post">
                         <div class="form-group">
                             <label>Hotel</label>
                             <input type="text" name="searchParam" class="form-control"/>
@@ -179,12 +179,12 @@
                         <br>
                         <div class="form-group">
                             <label>Check in</label>
-                            <input type="date" class="form-control"/>
+                            <input type="date" name="start_date" class="form-control"/>
                         </div>
                         <br>
                         <div class="form-group">
                             <label>Check out</label>
-                            <input type="date" class="form-control"/>
+                            <input type="date" name="end_date" class="form-control"/>
                         </div>
                         <br>
                         <div class="form-group" id="group">

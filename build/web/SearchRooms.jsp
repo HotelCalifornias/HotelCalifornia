@@ -111,11 +111,11 @@
                         </div>
                         <div class="form-group">
                             <label>Check in:</label>
-                            <input type="date" class="form-control"/>
+                            <input type="date" name="start_date" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <label>Check out:</label>
-                            <input type="date" class="form-control"/>
+                            <input type="date" name="end_date" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Search</button>
