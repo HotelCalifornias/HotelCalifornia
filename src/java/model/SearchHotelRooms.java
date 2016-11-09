@@ -133,7 +133,7 @@ public class SearchHotelRooms {
             pstm.setString(2,  end);
             pstm.setString(3,  start);
             pstm.setString(4,  end);
-            pstm.setString(5,  start);
+//            pstm.setString(5, roomType);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 r = new SearchHotelRooms(rs);
@@ -156,7 +156,7 @@ public class SearchHotelRooms {
         return "SearchHotelRooms " + "roomId=" + roomId + ", roomNumber=" + roomNumber + ", roomType=" + roomType + ", roomFloor=" + roomFloor + ", roomDescription=" + roomDescription + ", roomPrice=" + roomPrice + '}';
     }
     public static void main(String[] args) {
-        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByDate("2016-11-12","2016-11-13");
-        System.out.println(sh);
+//        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByDate("2016-11-12","2016-11-13","Normal");
+//        System.out.println(sh);
     } 
 }

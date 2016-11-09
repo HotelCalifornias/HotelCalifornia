@@ -4,6 +4,7 @@
     Author     : Saraf
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.SearchHotelRooms"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -82,7 +83,7 @@
                 background-color: #fff;
                 background-repeat: repeat-x;
                 background-position: left bottom;
-                margin-bottom: 2rem;
+                margin-bottom: 2em;
                 padding-top: 1em;
                 padding-bottom: 1em;
                 position: relative;
@@ -98,44 +99,55 @@
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-        <div class="fullwidth">
-            <div class="container-fluid">
-                <div class="row">
-                    <img class="imgbg" src="http://www.statravel.co.th/static/th_division_web_live2/assets/Careers-960x400-why-travel-til.jpg"/>
-                </div>
-                <div class="row">
-                    <form class="form-inline text-center topsearch">
-                        <div class="form-group">
-                            <label>Hotel:</label>
-                            <input type="text" class="form-control" placeholder="Search"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Check in:</label>
-                            <input type="date" name="start_date" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Check out:</label>
-                            <input type="date" name="end_date" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <br>
-            <div class="container">
-                <div class="row blog">
-                    <div class="col-md-3">
-                        <img class="imgblog" src="http://cdn.home-designing.com/wp-content/uploads/2010/10/living-room-artificial-light-by-ferdaviola.jpg">
+            <div class="fullwidth">
+                <div class="container-fluid">
+                    <div class="row">
+                        <img class="imgbg" src="http://www.statravel.co.th/static/th_division_web_live2/assets/Careers-960x400-why-travel-til.jpg"/>
                     </div>
-                    <div class="col-md-9">
-                        <h1>Test Rooms</h1>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...
+                    <div class="row">
+                        <form class="form-inline text-center topsearch" action="SearchHotelRooms" method="post">                          
+                            <div class="form-group">
+                                <label>Check in:</label>
+                                <input type="date" name="start_date" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Check out:</label>
+                                <input type="date" name="end_date" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Room Type</label>
+                                <select class="form-control" name="rtype" id="sel1">
+                                    <option value="0">Normal</option>
+                                    <option value="1">Delux</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
+                <br>
+                <br>
+            <c:forEach items="${rooms}" var="r">
+                <div class="container">
+                    <a href="#">
+                        <div class="row blog">
+                            <div class="col-md-3">
+                                <img class="imgblog" src="Photo/${r.roomId}.jpg">
+                            </div>
+                            <div class="col-md-9">
+                                <h1>Rooms ID :: ${r.roomId}</h1>
+                                <p>${r.roomNumber}</p>
+                                <p>${r.roomType}</p>
+                                <p>${r.roomDescription}</p>
+                                <p>${r.roomPrice}</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </c:forEach>
             <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
             <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
             <script>

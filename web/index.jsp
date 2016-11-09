@@ -172,10 +172,6 @@
             <div class="row">
                 <div class="col-md-offset-3 col-md-6 col-md-offset-3 search">
                     <form class="form" action="SearchHotelRooms" method="post">
-                        <div class="form-group">
-                            <label>Hotel</label>
-                            <input type="text" name="searchParam" class="form-control"/>
-                        </div>
                         <br>
                         <div class="form-group">
                             <label>Check in</label>
@@ -185,6 +181,14 @@
                         <div class="form-group">
                             <label>Check out</label>
                             <input type="date" name="end_date" class="form-control"/>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Room Type</label>
+                            <select class="form-control" name="rtype" id="sel1">
+                                <option value="0">Normal</option>
+                                <option value="1">Delux</option>
+                            </select>
                         </div>
                         <br>
                         <div class="form-group" id="group">
