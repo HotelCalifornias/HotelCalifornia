@@ -101,40 +101,51 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h3 class="modal-title text-center">Sign Up</h3>
                 </div>
-                <div class="modal-body"> 
-                    <div class="form-group">
-                        <label>Username :</label>
-                        <input type="text" class="form-control" name="username">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Username :</label>
+                                <input type="text" class="form-control" name="username">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Password :</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Password :</label>
-                        <input type="text" class="form-control" name="password">
-                    </div>
-                    <div class="form-group">
-                        <label>First Name :</label>
-                        <input type="text" class="form-control" name="fname">
-                    </div>
-                    <div class="form-group">
-                        <label>Last Name :</label>
-                        <input type="text" class="form-control" name="lname">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First Name :</label>
+                                <input type="text" class="form-control" name="fname">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last Name :</label>
+                                <input type="text" class="form-control" name="lname">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>E-mail :</label>
-                        <input type="text" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email">
                     </div>
                     <div class="form-group">
                         <label>Address :</label>
-                        <input type="text" class="form-control" name="address">
+                        <textarea class="form-control" rows="5" name="address"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>City :</label>
-                        <input type="text" class="form-control" name="city">
-                    </div>
-                    <div class="form-group">
-                        <label>Country :</label>
-                        <input type="text" class="form-control" name="country">
-                    </div>
-
+                    <!--                    <div class="form-group">
+                                            <label>City :</label>
+                                            <input type="text" class="form-control" name="city">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Country :</label>
+                                            <input type="text" class="form-control" name="country">
+                                        </div>-->
                 </div>
                 <div class="modal-footer">
                     <div class="form-group">

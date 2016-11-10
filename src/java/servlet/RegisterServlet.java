@@ -44,7 +44,10 @@ public class RegisterServlet extends HttpServlet {
         String city = request.getParameter("city");
         String country = request.getParameter("country");
         String message = "";
-
+        if(city == null && country == null){
+            city = "";
+            country = "";
+        }
         if (username != null && password != null && fname != null && lname != null && email != null
                 && address != null && city != null && country != null) {
 

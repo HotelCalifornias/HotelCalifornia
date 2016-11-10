@@ -32,22 +32,21 @@ public class SearchHotelRoomsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-//        String param = request.getParameter("searchParam");
         String start = request.getParameter("start_date");
         String end = request.getParameter("end_date");
-//        String[] type = request.getParameterValues("rtype");
-//        String roomType = null;
-//        if(start == null && end == null){
-//            start = "";
-//            end = "";
-//        }
-//        if(type.equals("0")){
-//            roomType = "Normal";
-//        }
-//        else if(type.equals("1")){
-//            roomType = "Delux";
-//        }
-        List<SearchHotelRooms> rooms = SearchHotelRooms.findByDate(start, end);
+        String[] type = request.getParameterValues("rtype");
+        String roomType = null;
+        if(start == null && end == null){
+            start = "";
+            end = "";
+        }
+        if(type[0].equals("0")){
+            roomType = "Normal";
+        }
+        else if(type[0].equals("1")){
+            roomType = "Delux";
+        }
+        List<SearchHotelRooms> rooms = SearchHotelRooms.findByDate(start, end, roomType);
         if(rooms == null){
             request.setAttribute("message", "Room dose not exist!");
         }else{

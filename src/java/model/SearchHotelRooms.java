@@ -121,19 +121,19 @@ public class SearchHotelRooms {
         return rooms;
     }
     
-    public static List<SearchHotelRooms> findByDate(String start, String end){
+    public static List<SearchHotelRooms> findByDate(String start, String end, String type){
         List<SearchHotelRooms> rooms = null;
         SearchHotelRooms r = null;
 
         Connection conn = ConnectionBuilder.getCon();
         try {
             PreparedStatement pstm = conn.prepareStatement("select * from hotelrooms where roomid not in(select roomid from reservation "
-                    + "where date_from between ? and ? or date_to between ? and ?)");
+                    + "where (date_from between ? and ?) or (date_to between ? and ?)) and roomType = ?");
             pstm.setString(1,  start);
             pstm.setString(2,  end);
             pstm.setString(3,  start);
             pstm.setString(4,  end);
-//            pstm.setString(5, roomType);
+            pstm.setString(5, type);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 r = new SearchHotelRooms(rs);
