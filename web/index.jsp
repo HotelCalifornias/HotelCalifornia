@@ -29,6 +29,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/hover.css/2.0.2/hover-min.css">
         <!-- animate.css -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.2/animate.min.css">
+
+        <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
         <style>
             #login-dp{
                 min-width: 44vh;
@@ -139,7 +141,7 @@
             }
         </style>
     </head>
-    <body id="page-top">
+    <body id="page-top" onload="disButton()">
         <jsp:include page="header.jsp"></jsp:include>
         <div class="fullwidth ">
             <div class="container-fluid">
@@ -175,12 +177,12 @@
                         <br>
                         <div class="form-group">
                             <label>Check in</label>
-                            <input type="date" name="start_date" class="form-control"/>
+                            <input type="date" name="start_date" class="form-control" id="datetimepicker" required/>
                         </div>
                         <br>
                         <div class="form-group">
                             <label>Check out</label>
-                            <input type="date" name="end_date" class="form-control"/>
+                            <input type="date" name="end_date" class="form-control" id="datetimepicker2" required/>
                         </div>
                         <br>
                         <div class="form-group">
@@ -204,6 +206,7 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="slick-1.6.0/slick/slick.min.js"></script>
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
     <script>
         $(window).scroll(function () {
             if ($(".navbar").offset().top > 30) {
@@ -260,7 +263,43 @@
                     window.location.hash = target;
                 });
             });
+//            $('#valid').on("click",function(){
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var fname = $("#fname").val();
+            var lname = $("#lname").val();
+            var email = $("#email").val();
+            var address = $("#address").val();            
+//               var Data = "username="+username+"&password="+password+"&fname="+fname+"&lname="+lname+"&email="+email+"&address="+address;
+//               
+//               $.ajax({
+//                   type : "GET",
+//                   url : "RegisterServlet",
+//                   data : Data,
+//                   error : function(){
+//                       swal("Fail!", "You clicked the button!", "error");
+//                   },
+//                   success : function(){                      
+//                       swal("Good job!", "You clicked the button!", "success");
+//                   }
+//               });
+//            });
+            $('.field .inputbox').keyup(function () {
+                var empty = false;
+                $('.field .inputbox').each(function () {
+                    if ($(this).val().length == 0) {
+                        empty = true;
+                    }
+                });
+                if (empty) {
+                    $('.actions button').attr('disabled', 'disabled');
+                } else if($('.inputbox').val().length > 6) {
+                    $('.actions button').attr('disabled', false);
+                }
+            });
         });
-
+        var today = new Date().toISOString().split('T')[0];
+            document.getElementsByName("start_date")[0].setAttribute('min', today);
+            document.getElementsByName("end_date")[0].setAttribute('min', today);
     </script>
 </html>

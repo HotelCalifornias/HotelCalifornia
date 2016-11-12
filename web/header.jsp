@@ -32,11 +32,11 @@
                                             <form class="form" role="form" action="LoginServlet" method="post">
                                                 <div class="form-group" id="group">
                                                     <label for="usr">Username : </label>
-                                                    <input type="text" class="form-control" placeholder="Username" name="username"/>                                       
+                                                    <input type="text" class="form-control" placeholder="Username" name="username" required/>                                       
                                                 </div>
                                                 <div class="form-group" id="group">
                                                     <label for="pwd">Password : </label>
-                                                    <input type="password" class="form-control" placeholder="Password" name="password"/>
+                                                    <input type="password" class="form-control" placeholder="Password" name="password" required/>
                                                 </div>
                                                 <div class="form-group" id="group">
                                                     <button type="submit" class="btn btn-primary btn-block">Login</button>
@@ -96,7 +96,7 @@
     <div class="modal-dialog">
         <!-- Content -->
         <div class="modal-content">
-            <form action="RegisterServlet" method="post">
+            <form action="RegisterServlet" method="get">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h3 class="modal-title text-center">Sign Up</h3>
@@ -104,39 +104,39 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group field">
                                 <label>Username :</label>
-                                <input type="text" class="form-control" name="username">
+                                <input type="text" class="form-control inputbox" name="username" id="username" required>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group field">
                                 <label>Password :</label>
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control inputbox" name="password" id="password" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group field">
                                 <label>First Name :</label>
-                                <input type="text" class="form-control" name="fname">
+                                <input type="text" class="form-control inputbox" name="fname" id="fname" required>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group field">
                                 <label>Last Name :</label>
-                                <input type="text" class="form-control" name="lname">
+                                <input type="text" class="form-control inputbox" name="lname" id="lname" required>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group field">
                         <label>E-mail :</label>
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control inputbox" name="email" id="email" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group field">
                         <label>Address :</label>
-                        <textarea class="form-control" rows="5" name="address"></textarea>
+                        <textarea class="form-control inputbox" rows="5" name="address" id="address" required></textarea>
                     </div>
                     <!--                    <div class="form-group">
                                             <label>City :</label>
@@ -148,8 +148,8 @@
                                         </div>-->
                 </div>
                 <div class="modal-footer">
-                    <div class="form-group">
-                        <button type="Submit" class="btn btn-default">Submit</button>
+                    <div class="form-group actions">
+                        <button type="Submit" class="btn btn-default" id="valid" disabled="disabled">Submit</button>
                     </div>
                 </div>
             </form>

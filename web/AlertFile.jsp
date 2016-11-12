@@ -14,12 +14,19 @@
         <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
         <script>
             function myFunction() {
-            swal
-            ({   
-                title: "Error!",   
-                text: "Here's my error message!",   
-                type: "error",   
-                confirmButtonText: "Cool" });
+                swal({
+                    title: "Ajax request example",
+                    text: "Submit to run ajax request",
+                    type: "info",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    showLoaderOnConfirm: true,
+                },
+                        function () {
+                            setTimeout(function () {
+                                swal("Ajax request finished!");
+                            }, 2000);
+                        });
             }
         </script>
     </head>

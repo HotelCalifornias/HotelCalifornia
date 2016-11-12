@@ -44,23 +44,25 @@ public class RegisterServlet extends HttpServlet {
         String city = request.getParameter("city");
         String country = request.getParameter("country");
         String message = "";
+        Boolean isValid = false;
+        HttpSession session = request.getSession(true);
         if(city == null && country == null){
             city = "";
             country = "";
         }
         if (username != null && password != null && fname != null && lname != null && email != null
                 && address != null && city != null && country != null) {
-
-            HttpSession session = request.getSession(true);
             try {
                 Register r = new Register();
                 r.signUp(username, password,fname,lname,email,address,city,country);
                 message = "Register Success!";
                 request.setAttribute("message", message);
+                isValid = true;
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        session.setAttribute("isValid", isValid);
     
 
     getServletContext()
