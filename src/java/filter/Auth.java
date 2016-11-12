@@ -33,7 +33,7 @@ public class Auth implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpSession session = ((HttpServletRequest)request).getSession(false);
         if(session == null || session.getAttribute("login") == null){
-            config.getServletContext().getRequestDispatcher("/LoginServlet").forward(request, response);
+            config.getServletContext().getRequestDispatcher("/AuthLoginServlet").forward(request, response);
         }
         else{
             chain.doFilter(request, response);

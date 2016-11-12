@@ -96,7 +96,7 @@
     <div class="modal-dialog">
         <!-- Content -->
         <div class="modal-content">
-            <form action="RegisterServlet" method="get">
+            <form action="RegisterServlet" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h3 class="modal-title text-center">Sign Up</h3>

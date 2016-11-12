@@ -293,7 +293,7 @@
                 });
                 if (empty) {
                     $('.actions button').attr('disabled', 'disabled');
-                } else if($('.inputbox').val().length > 6) {
+                } else if($(this).val().length > 5) {
                     $('.actions button').attr('disabled', false);
                 }
             });

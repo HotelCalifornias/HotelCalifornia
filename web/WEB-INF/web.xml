@@ -26,6 +26,10 @@
         <servlet-name>SearchHotelRoomsServlet</servlet-name>
         <servlet-class>servlet.SearchHotelRoomsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AuthLoginServlet</servlet-name>
+        <servlet-class>servlet.AuthLoginServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -41,6 +45,10 @@
     <servlet-mapping>
         <servlet-name>SearchHotelRoomsServlet</servlet-name>
         <url-pattern>/SearchHotelRooms</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthLoginServlet</servlet-name>
+        <url-pattern>/AuthLoginServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
