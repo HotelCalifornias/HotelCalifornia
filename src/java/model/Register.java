@@ -120,9 +120,9 @@ public class Register {
 
  
 
-    public static void signUp(String username, String password, String fname, String lname, String email, String address, String city, String country) throws ClassNotFoundException, SQLException {
+    public static void signUp(String username, String password, String fname, String lname, String email, String address) throws ClassNotFoundException, SQLException {
         Connection con = ConnectionBuilder.getCon();
-        PreparedStatement pst = con.prepareStatement("insert into account (username,password,fname,lname,email,address,city,country) values (?,?,?,?,?,?,?,?)");
+        PreparedStatement pst = con.prepareStatement("insert into accounts (username,password,fname,lname,email,address) values (?,?,?,?,?,?)");
         
         
         pst.setString(1, username);
@@ -131,8 +131,6 @@ public class Register {
         pst.setString(4, lname);
         pst.setString(5, email);
         pst.setString(6, address);
-        pst.setString(7, city);
-        pst.setString(8, country);
         pst.executeUpdate();
         con.close();
         

@@ -19,32 +19,74 @@ import java.util.List;
  */
 public class SearchHotelRooms {
     private int roomId;
-    private String roomNumber;
-    private String roomType;
-    private String roomFloor;
-    private String roomDescription;
-    private int roomPrice;
+    private String roomName;
+    private int capacity;
+    private int type;
+    private String roomDes;
+    private int price;
 
     public SearchHotelRooms() {
     }
     
     public SearchHotelRooms(ResultSet rs) throws SQLException {
-        this.roomId = rs.getInt("roomID");
-        this.roomNumber = rs.getString("roomNumber");
-        this.roomType = rs.getString("roomType");
-        this.roomFloor = rs.getString("roomFloor");
-        this.roomDescription = rs.getString("roomDescription");
-        this.roomPrice = rs.getInt("roomPrice");
+        this.roomId = rs.getInt("roomId");
+        this.roomName = rs.getString("roomName");
+        this.capacity = rs.getInt("capacity");
+        this.type = rs.getInt("type");
+        this.roomDes = rs.getString("roomDes");
+        this.price = rs.getInt("price");
     }
 
-    public SearchHotelRooms(int roomId, String roomNumber, String roomType, String roomFloor, String roomDescription, int roomPrice) {
+    public SearchHotelRooms(int roomId, String roomName, int capacity, int type, String roomDes, int price) {
         this.roomId = roomId;
-        this.roomNumber = roomNumber;
-        this.roomType = roomType;
-        this.roomFloor = roomFloor;
-        this.roomDescription = roomDescription;
-        this.roomPrice = roomPrice;
+        this.roomName = roomName;
+        this.capacity = capacity;
+        this.type = type;
+        this.roomDes = roomDes;
+        this.price = price;
     }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getRoomDes() {
+        return roomDes;
+    }
+
+    public void setRoomDes(String roomDes) {
+        this.roomDes = roomDes;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
+   
 
     public int getRoomId() {
         return roomId;
@@ -54,45 +96,7 @@ public class SearchHotelRooms {
         this.roomId = roomId;
     }
 
-    public String getRoomNumber() {
-        return roomNumber;
-    }
-
-    public void setRoomNumber(String roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-    }
-
-    public String getRoomFloor() {
-        return roomFloor;
-    }
-
-    public void setRoomFloor(String roomFloor) {
-        this.roomFloor = roomFloor;
-    }
-
-    public String getRoomDescription() {
-        return roomDescription;
-    }
-
-    public void setRoomDescription(String roomDescription) {
-        this.roomDescription = roomDescription;
-    }
-
-    public int getRoomPrice() {
-        return roomPrice;
-    }
-
-    public void setRoomPrice(int roomPrice) {
-        this.roomPrice = roomPrice;
-    }
+   
 
 //    private static final String FIND_BY_NAME = "select * from rooms where roomnumber like ?";
     
@@ -121,19 +125,21 @@ public class SearchHotelRooms {
         return rooms;
     }
     
-    public static List<SearchHotelRooms> findByDate(String start, String end, String type){
+    public static List<SearchHotelRooms> findByDate(String start, String end, int type){
         List<SearchHotelRooms> rooms = null;
         SearchHotelRooms r = null;
 
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from hotelrooms where roomid not in(select roomid from reservation "
-                    + "where (date_from between ? and ?) or (date_to between ? and ?)) and roomType = ?");
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM rooms where roomId not in "
+                    + "(select roomId from resroom WHERE resroomId in ( select resroomId from reservations where "
+                    + "(date_start BETWEEN ? and ?) or (date_end BETWEEN ? and ?))) "
+                    + "and type = ?");
             pstm.setString(1,  start);
             pstm.setString(2,  end);
             pstm.setString(3,  start);
             pstm.setString(4,  end);
-            pstm.setString(5, type);
+            pstm.setInt(5, type);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 r = new SearchHotelRooms(rs);
@@ -150,13 +156,22 @@ public class SearchHotelRooms {
         }
         return rooms;
     }
-    
+
     @Override
     public String toString() {
-        return "SearchHotelRooms " + "roomId=" + roomId + ", roomNumber=" + roomNumber + ", roomType=" + roomType + ", roomFloor=" + roomFloor + ", roomDescription=" + roomDescription + ", roomPrice=" + roomPrice + '}';
+        return  "---------------\n"
+                +"Room ID : "+roomId+"\n"
+                +"Roon Name : "+roomName+"\n"
+                +"Capacity : "+capacity+"\n"
+                +"Room Type : "+type+"\n"
+                +"Room Description : "+roomDes+"\n"
+                +"Price : "+price+"\n"
+                +"---------------\n";
     }
+    
+   
     public static void main(String[] args) {
-//        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByDate("2016-11-12","2016-11-13","Normal");
-//        System.out.println(sh);
+        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByDate("2016-11-14","2016-11-16",1);
+        System.out.println(sh);
     } 
 }

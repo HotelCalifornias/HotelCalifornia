@@ -59,7 +59,7 @@ public class Login {
         
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from account where username = ? and password = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from accounts where username = ? and password = ?");
             pstm.setString(1, paramU);
             pstm.setString(2, paramP);
             ResultSet rs = pstm.executeQuery();
@@ -83,7 +83,7 @@ public class Login {
         Connection conn = ConnectionBuilder.getCon();
         boolean check = false ;
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from account where username = ? and password = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from accounts where username = ? and password = ?");
             pstm.setString(1, username);
             pstm.setString(2, password);
             ResultSet rs = pstm.executeQuery();

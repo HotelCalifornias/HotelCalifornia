@@ -138,10 +138,11 @@
                             </div>
                             <div class="col-md-9">
                                 <h1>Rooms ID :: ${r.roomId}</h1>
-                                <p>${r.roomNumber}</p>
-                                <p>${r.roomType}</p>
-                                <p>${r.roomDescription}</p>
-                                <p>${r.roomPrice}</p>
+                                <p>${r.roomName}</p>
+                                <p>${r.type}</p>
+                                <p>${r.capacity}</p>
+                                <p>${r.roomDes}</p>
+                                <p>${r.price}</p>
 
                             </div>
                         </div>

@@ -35,16 +35,16 @@ public class SearchHotelRoomsServlet extends HttpServlet {
         String start = request.getParameter("start_date");
         String end = request.getParameter("end_date");
         String[] type = request.getParameterValues("rtype");
-        String roomType = null;
+        int roomType = 0;
         if(start == null && end == null){
             start = "";
             end = "";
         }
         if(type[0].equals("0")){
-            roomType = "Normal";
+            roomType = 0;
         }
         else if(type[0].equals("1")){
-            roomType = "Delux";
+            roomType = 1;
         }
         List<SearchHotelRooms> rooms = SearchHotelRooms.findByDate(start, end, roomType);
         if(rooms == null){

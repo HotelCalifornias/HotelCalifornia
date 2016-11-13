@@ -41,20 +41,15 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        String city = request.getParameter("city");
-        String country = request.getParameter("country");
         String message = "";
         Boolean isValid = false;
         HttpSession session = request.getSession(true);
-        if(city == null && country == null){
-            city = "";
-            country = "";
-        }
+        
         if (username != null && password != null && fname != null && lname != null && email != null
-                && address != null && city != null && country != null) {
+                && address != null) {
             try {
                 Register r = new Register();
-                r.signUp(username, password,fname,lname,email,address,city,country);
+                r.signUp(username, password,fname,lname,email,address);
                 message = "Register Success!";
                 request.setAttribute("message", message);
                 isValid = true;
