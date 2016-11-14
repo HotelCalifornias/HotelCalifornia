@@ -131,10 +131,8 @@ public class SearchHotelRooms {
 
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM rooms where roomId not in "
-                    + "(select roomId from resroom WHERE resroomId in ( select resroomId from reservations where "
-                    + "(date_start BETWEEN ? and ?) or (date_end BETWEEN ? and ?))) "
-                    + "and type = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from rooms where roomId not in"
+                    + "(select roomId from reservation where (date_from between ? and ?) or (date_to between ? and ?)) and type = ?");
             pstm.setString(1,  start);
             pstm.setString(2,  end);
             pstm.setString(3,  start);

@@ -1,24 +1,25 @@
-package servlet;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package servlet;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Login;
+import model.DetailRoom;
 
 /**
  *
  * @author PT
  */
-public class LoginServlet extends HttpServlet {
+public class DetailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,36 +32,18 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        
-        Login l = new Login();
-        HttpSession session = request.getSession(true);
-        List<Login> ll = Login.UserLogin(username, password);
-        
-        if(session.getAttribute("login") == null){
-            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-            response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-            response.setDateHeader("Expires", 0);
-            if(l.checkLogin(username, password)){
-                session.setAttribute("login", ll);
-                request.setAttribute("Success", ll);
-            }
+            String roomId = request.getParameter("roomId");
+//            int roomid = Integer.parseInt(roomId);
+            
+            List<DetailRoom> room = DetailRoom.findByRoom(roomId);
+            if(room == null){
+            request.setAttribute("message", "Room dose not exist!");
+        }else{
+            request.setAttribute("roomsDe", room);
         }
- 
-//        if (l.checkLogin(username, password)) {
-//            if (session.getAttribute("login") == null) {
-//                session.setAttribute("login", ll);
-//                request.setAttribute("Success", ll);
-//            }
-//        } else if(!l.checkLogin(username, password)) {
-//            request.setAttribute("message", "Fail");
-//            if (session.getAttribute("login") != null) {
-//                session.removeAttribute("login");
-//            }
-//        }
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/DetailRoom.jsp").forward(request, response);
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

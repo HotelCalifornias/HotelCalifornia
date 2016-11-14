@@ -188,8 +188,8 @@
                         <div class="form-group">
                             <label>Room Type</label>
                             <select class="form-control" name="rtype">
-                                <option value="0">Normal</option>
-                                <option value="1">Delux</option>
+                                <option value="1">Normal</option>
+                                <option value="2">Delux</option>
                             </select>
                         </div>
                         <br>

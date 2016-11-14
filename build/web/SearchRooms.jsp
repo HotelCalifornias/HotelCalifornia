@@ -117,8 +117,8 @@
                             <div class="form-group">
                                 <label>Room Type</label>
                                 <select class="form-control" name="rtype">
-                                    <option value="0">Normal</option>
-                                    <option value="1">Delux</option>
+                                    <option value="1">Normal</option>
+                                    <option value="2">Delux</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -131,7 +131,7 @@
                 <br>
             <c:forEach items="${rooms}" var="r">
                 <div class="container">
-                    <a href="#">
+                    <a href="DetailServlet?roomId=${r.roomId}">
                         <div class="row blog">
                             <div class="col-md-3">
                                 <img class="imgblog" src="Photo/${r.roomId}.jpg">
@@ -143,7 +143,6 @@
                                 <p>${r.capacity}</p>
                                 <p>${r.roomDes}</p>
                                 <p>${r.price}</p>
-
                             </div>
                         </div>
                     </a>
@@ -162,8 +161,8 @@
                     }
                 });
                 var today = new Date().toISOString().split('T')[0];
-                    document.getElementsByName("start_date")[0].setAttribute('min', today);
-                    document.getElementsByName("end_date")[0].setAttribute('min', today);
+                document.getElementsByName("start_date")[0].setAttribute('min', today);
+                document.getElementsByName("end_date")[0].setAttribute('min', today);
             </script>
     </body>
 </html>

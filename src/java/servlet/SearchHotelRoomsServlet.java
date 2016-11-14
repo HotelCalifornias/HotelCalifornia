@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.SearchHotelRooms;
 
 /**
@@ -36,20 +37,22 @@ public class SearchHotelRoomsServlet extends HttpServlet {
         String end = request.getParameter("end_date");
         String[] type = request.getParameterValues("rtype");
         int roomType = 0;
+        HttpSession session = request.getSession(true);
         if(start == null && end == null){
             start = "";
             end = "";
         }
-        if(type[0].equals("0")){
-            roomType = 0;
-        }
-        else if(type[0].equals("1")){
+        if(type[0].equals("1")){
             roomType = 1;
+        }
+        else if(type[0].equals("2")){
+            roomType = 2;
         }
         List<SearchHotelRooms> rooms = SearchHotelRooms.findByDate(start, end, roomType);
         if(rooms == null){
             request.setAttribute("message", "Room dose not exist!");
         }else{
+            session.setAttribute("room", rooms);
             request.setAttribute("rooms", rooms);
         }
         getServletContext().getRequestDispatcher("/SearchRooms.jsp").forward(request, response);
