@@ -35,6 +35,10 @@
         <servlet-class>servlet.DetailServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>MailServlet</servlet-name>
+        <servlet-class>servlet.MailServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ReservationServlet</servlet-name>
         <servlet-class>servlet.ReservationServlet</servlet-class>
     </servlet>
@@ -61,6 +65,10 @@
     <servlet-mapping>
         <servlet-name>DetailServlet</servlet-name>
         <url-pattern>/DetailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MailServlet</servlet-name>
+        <url-pattern>/MailServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReservationServlet</servlet-name>
