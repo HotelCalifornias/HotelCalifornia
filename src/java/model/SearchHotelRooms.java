@@ -125,6 +125,31 @@ public class SearchHotelRooms {
         return rooms;
     }
     
+    public static List<SearchHotelRooms> findRoomsInUse(){
+        List<SearchHotelRooms> rooms = null;
+        SearchHotelRooms r = null;
+        Connection con = ConnectionBuilder.getCon();
+        try {
+            PreparedStatement pst = con.prepareStatement("select * from rooms where roomId in"
+                    + " (select roomId from reservation)");
+            pst.executeQuery();
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                r = new SearchHotelRooms(rs);
+                if(rooms == null){
+                    rooms = new ArrayList();
+                }
+                rooms.add(r);
+            }
+            rs.close();
+            pst.close();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return rooms;
+    }
+    
     public static List<SearchHotelRooms> findByDate(String start, String end, int type){
         List<SearchHotelRooms> rooms = null;
         SearchHotelRooms r = null;
