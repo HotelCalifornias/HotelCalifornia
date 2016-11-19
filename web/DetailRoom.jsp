@@ -19,22 +19,32 @@
     </head>
     <body>
         <h1>Detail Room</h1>
-        <c:forEach items="${roomsDe}" var="r">
-            <div class="container">
-                <div class="row blog">
-                    <div class="col-md-3">
-                        <img class="imgblog" src="Photo/${r.roomId}.jpg">
-                    </div>
-                    <div class="col-md-9">
-                        <h1>Rooms ID :: ${r.roomId}</h1>
-                        <p>${r.roomName}</p>
-                        <p>${r.type}</p>
-                        <p>${r.capacity}</p>
-                        <p>${r.roomDes}</p>
-                        <p>${r.price}</p>
+        <form action="Reservation" method="POST">
+            <c:forEach items="${roomsDe}" var="r">
+                <div class="container">
+                    <div class="row blog">
+                        <div class="col-md-3">
+                            <img class="imgblog" src="Photo/${r.roomId}.jpg">
+                        </div>
+                        <div class="col-md-9">
+                            <h1>Rooms ID :: ${r.roomId}</h1>
+                            <p>${r.roomName}</p>
+                            <p>${r.capacity}</p>
+                            <p>${r.roomDes}</p>
+                            <input type="text" name="roomPrice" value="${r.price}"/>
+                            <input type="text" value="${stringDateStart}"/>
+                            <input type="text" value="${stringDateEnd}"/>
+                            <p>${days}</p>
+                            <c:forEach items="${roomServices}" var="rs">
+                                <p>${rs.serviceDes}</p> <input type="text" name="price" value="${rs.servicePrice}"/>
+                            </c:forEach>
+                            <input type="submit"/>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
+            
+        </form>
+
     </body>
 </html>

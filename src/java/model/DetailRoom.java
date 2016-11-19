@@ -21,6 +21,7 @@ public class DetailRoom {
     private String roomName;
     private int capacity;
     private int type;
+    private String roomTypeName;
     private String roomDes;
     private int price;
 
@@ -32,6 +33,11 @@ public class DetailRoom {
         this.roomName = rs.getString("roomName");
         this.capacity = rs.getInt("capacity");
         this.type = rs.getInt("type");
+        if(type == 1){
+            this.roomTypeName = "Normal";
+        }else{
+            this.roomTypeName = "Delux";
+        }
         this.roomDes = rs.getString("roomDes");
         this.price = rs.getInt("price");
     }
@@ -51,6 +57,14 @@ public class DetailRoom {
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
+    }
+
+    public String getRoomTypeName() {
+        return roomTypeName;
+    }
+
+    public void setRoomTypeName(String roomTypeName) {
+        this.roomTypeName = roomTypeName;
     }
 
     public String getRoomName() {
