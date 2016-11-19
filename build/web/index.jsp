@@ -177,12 +177,12 @@
                         <br>
                         <div class="form-group">
                             <label>Check in</label>
-                            <input type="date" name="start_date" class="form-control" id="datetimepicker" required/>
+                            <input onchange="DateCheck()" id="StartDate" type="date" name="start_date" class="form-control" required/>
                         </div>
                         <br>
                         <div class="form-group">
                             <label>Check out</label>
-                            <input type="date" name="end_date" class="form-control" id="datetimepicker2" required/>
+                            <input onchange="DateCheck()" id="EndDate" type="date" name="end_date" class="form-control" required/>
                         </div>
                         <br>
                         <div class="form-group">
@@ -194,7 +194,7 @@
                         </div>
                         <br>
                         <div class="form-group" id="group">
-                            <button type="submit" class="submitsearch btn btn-block">Search</button>
+                            <button id="butSearch" type="submit" class="submitsearch btn btn-block">Search</button>
                         </div>
                     </form>
                 </div>
@@ -269,7 +269,7 @@
             var fname = $("#fname").val();
             var lname = $("#lname").val();
             var email = $("#email").val();
-            var address = $("#address").val();            
+            var address = $("#address").val();
 //               var Data = "username="+username+"&password="+password+"&fname="+fname+"&lname="+lname+"&email="+email+"&address="+address;
 //               
 //               $.ajax({
@@ -293,13 +293,30 @@
                 });
                 if (empty) {
                     $('.actions button').attr('disabled', 'disabled');
-                } else if($(this).val().length > 5) {
+                } else if ($(this).val().length > 5) {
                     $('.actions button').attr('disabled', false);
                 }
             });
         });
         var today = new Date().toISOString().split('T')[0];
-            document.getElementsByName("start_date")[0].setAttribute('min', today);
-            document.getElementsByName("end_date")[0].setAttribute('min', today);
+        document.getElementsByName("start_date")[0].setAttribute('min', today);
+        document.getElementsByName("end_date")[0].setAttribute('min', today);
+        
+        function DateCheck()
+        {
+            var StartDate = document.getElementById('StartDate').value;
+            var EndDate = document.getElementById('EndDate').value;
+            var eDate = new Date(EndDate);
+            var sDate = new Date(StartDate);
+            if (StartDate != '' && StartDate != '' && sDate > eDate)
+            {
+                alert("Please ensure that the End Date is greater than or equal to the Start Date.");
+                document.getElementById("butSearch").disabled = true;
+                return false;
+            }
+            else{
+                document.getElementById("butSearch").disabled = false;
+            }
+        }
     </script>
 </html>

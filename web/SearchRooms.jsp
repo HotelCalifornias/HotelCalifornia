@@ -108,11 +108,11 @@
                         <form class="form-inline text-center topsearch" action="SearchHotelRooms" method="post">                          
                             <div class="form-group">
                                 <label>Check in:</label>
-                                <input type="date" name="start_date" class="form-control"/>
+                                <input onchange="DateCheck()" id="StartDate" type="date" name="start_date" class="form-control"/>
                             </div>
                             <div class="form-group">
                                 <label>Check out:</label>
-                                <input type="date" name="end_date" class="form-control"/>
+                                <input onchange="DateCheck()" id="EndDate" type="date" name="end_date" class="form-control"/>
                             </div>
                             <div class="form-group">
                                 <label>Room Type</label>
@@ -122,7 +122,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Search</button>
+                                <button id="butSearch" type="submit" class="btn btn-primary">Search</button>
                             </div>
                         </form>
                     </div>
@@ -163,6 +163,22 @@
                 var today = new Date().toISOString().split('T')[0];
                 document.getElementsByName("start_date")[0].setAttribute('min', today);
                 document.getElementsByName("end_date")[0].setAttribute('min', today);
+
+                function DateCheck()
+                {
+                    var StartDate = document.getElementById('StartDate').value;
+                    var EndDate = document.getElementById('EndDate').value;
+                    var eDate = new Date(EndDate);
+                    var sDate = new Date(StartDate);
+                    if (StartDate != '' && StartDate != '' && sDate > eDate)
+                    {
+                        alert("Please ensure that the End Date is greater than or equal to the Start Date.");
+                        document.getElementById("butSearch").disabled = true;
+                        return false;
+                    } else {
+                        document.getElementById("butSearch").disabled = false;
+                    }
+                }
             </script>
     </body>
 </html>
