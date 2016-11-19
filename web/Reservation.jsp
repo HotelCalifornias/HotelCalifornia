@@ -13,8 +13,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-
-
     <body> 
         <form action="ConfirmReservation" method="POST">
             <c:forEach items="${account}" var="a" varStatus="ac">

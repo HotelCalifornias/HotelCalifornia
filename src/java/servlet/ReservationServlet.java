@@ -40,13 +40,37 @@ public class ReservationServlet extends HttpServlet {
         String roomPrice = request.getParameter("roomPrice");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String reservService = "";
+        String check1 = request.getParameter("check1");
+        String check2 = request.getParameter("check2");
+        String check3 = request.getParameter("check3");
+        String check4 = request.getParameter("check4");
+        int food = 0;
+        int food2 = 0;
+        int twin = 0;
+        int large = 0;
+        if(check1 != null){
+            food = 500;
+        }
+        if(check2 != null){
+            food2 = 500;
+        }
+        if(check3 != null){
+            twin = 100;
+        }
+        if(check4 != null){
+            large = 100;
+        }
+        
+        int total = food+food2;
+        System.out.println(total);
+        
         int totalPrice = 0;
         int rPrice = Integer.parseInt(roomPrice);
-        int sPrice = Integer.parseInt(servicePrice);
+//        int sPrice = Integer.parseInt(servicePrice);
+        
         if (session.getAttribute("roomsDe") != null) {
             Reservation price = new Reservation();
-            totalPrice = price.calculateTotalPrice(rPrice, sPrice);
+            totalPrice = price.calculateTotalPrice(rPrice, total);
             if (session != null && session.getAttribute("login") != null) {
                 Login l = new Login();
                 username = l.getUsername();

@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<!--<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Detail Room</title>
@@ -20,37 +20,36 @@
     <body>
         <h1>Detail Room</h1>
         <form action="Reservation" method="POST">
-            <c:forEach items="${roomsDe}" var="r">
-                <div class="container">
-                    <div class="row blog">
-                        <div class="col-md-3">
-                            <img class="imgblog" src="Photo/${r.roomId}.jpg">
-                        </div>
-                        <div class="col-md-9">
-                            <h1>Rooms ID :: ${r.roomId}</h1>
-                            <p>${r.roomName}</p>
-                            <p>${r.capacity}</p>
-                            <p>${r.roomDes}</p>
-                            <input type="text" name="roomPrice" value="${r.price}"/>
-                            <input type="text" value="${stringDateStart}"/>
-                            <input type="text" value="${stringDateEnd}"/>
-                            <p>${days}</p>
-                            <c:forEach items="${roomServices}" var="rs">
-                                <p>${rs.serviceDes}</p> <input type="text" name="price" value="${rs.servicePrice}"/>
-                            </c:forEach>
-                            <input type="submit"/>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-            
-        </form>
+<%--<c:forEach items="${roomsDe}" var="r">--%>
+    <div class="container">
+        <div class="row blog">
+            <div class="col-md-3">
+                <img class="imgblog" src="Photo/${r.roomId}.jpg">
+            </div>
+            <div class="col-md-9">
+                <h1>Rooms ID :: ${r.roomId}</h1>
+                <p>${r.roomName}</p>
+                <p>${r.capacity}</p>
+                <p>${r.roomDes}</p>
+                <input type="text" name="roomPrice" value="${r.price}"/>
+                <input type="text" value="${stringDateStart}"/>
+                <input type="text" value="${stringDateEnd}"/>
+                <p>${days}</p>
+<%--<c:forEach items="${roomServices}" var="rs">--%>
+    <p>${rs.serviceDes}</p> <input type="text" name="price" value="${rs.servicePrice}"/>
+<%--</c:forEach>--%>
+<input type="submit"/>
+</div>
+</div>
+</div>
+<%--</c:forEach>--%>
 
-    </body>
-</html>
+</form>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+</body>
+</html>-->
+
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -125,77 +124,89 @@
             <br>
             <br>
             <br>
-            <form>
-                <div class="container well">
-                <c:forEach items="${roomsDe}" var="r">
-                    <div class="row">
-                        <div class="col-md-6 gallary">
-                            <div class="slider-for">
-                                <div>
-                                    <img class="imgblog imgRoom" src="Photo/${r.roomId}.jpg">
-                                </div>
-                                <div>
-                                    <img class="imgblog imgRoom" src="http://d2f29brjr0xbt3.cloudfront.net/498_vintageroundup/oldcameras-14.jpg">
-                                </div>
-                                <div>
-                                    <img class="imgblog imgRoom" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
-                                </div>
-                                <div>
-                                    <img class="imgblog imgRoom" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
-                                </div>
-                                <div>
-                                    <img class="imgblog imgRoom" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
-                                </div>
+            <div class="container well">
+            <c:forEach items="${roomsDe}" var="r">
+                <div class="row">
+                    <div class="col-md-6 gallary">
+                        <div class="slider-for">
+                            <div>
+                                <img class="imgblog imgRoom" src="Photo/${r.roomId}.jpg">
                             </div>
-                            <br>
-                            <div class="slider-nav">
-                                <div>
-                                    <img data-tab="tab-1" class="imgblog navImg current" src="Photo/${r.roomId}.jpg">
-                                </div>
-                                <div>
-                                    <img data-tab="tab-2" class="imgblog navImg" src="http://d2f29brjr0xbt3.cloudfront.net/498_vintageroundup/oldcameras-14.jpg">
-                                </div>
-                                <div>
-                                    <img data-tab="tab-3" class="imgblog navImg" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
-                                </div>
-                                <div>
-                                    <img data-tab="tab-4" class="imgblog navImg" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
-                                </div>
-                                <div>
-                                    <img data-tab="tab-5" class="imgblog navImg" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
-                                </div>
+                            <div>
+                                <img class="imgblog imgRoom" src="http://d2f29brjr0xbt3.cloudfront.net/498_vintageroundup/oldcameras-14.jpg">
                             </div>
-<!--                            <img id="imgRoom" class="imgblog" src="Photo/${r.roomId}.jpg">-->
+                            <div>
+                                <img class="imgblog imgRoom" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                            </div>
+                            <div>
+                                <img class="imgblog imgRoom" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                            </div>
+                            <div>
+                                <img class="imgblog imgRoom" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                            </div>
                         </div>
-                        <div class="col-md-6">
+                        <br>
+                        <div class="slider-nav">
+                            <div>
+                                <img data-tab="tab-1" class="imgblog navImg current" src="Photo/${r.roomId}.jpg">
+                            </div>
+                            <div>
+                                <img data-tab="tab-2" class="imgblog navImg" src="http://d2f29brjr0xbt3.cloudfront.net/498_vintageroundup/oldcameras-14.jpg">
+                            </div>
+                            <div>
+                                <img data-tab="tab-3" class="imgblog navImg" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                            </div>
+                            <div>
+                                <img data-tab="tab-4" class="imgblog navImg" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                            </div>
+                            <div>
+                                <img data-tab="tab-5" class="imgblog navImg" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                            </div>
+                        </div>
+<!--                            <img id="imgRoom" class="imgblog" src="Photo/${r.roomId}.jpg">-->
+                    </div>
+                    <div class="col-md-6">
+                        <form action="Reservation" method="POST">
                             <div class="row">
                                 <div class="col-md-12">
                                     <h1>Rooms ID :: ${r.roomId}</h1>
+                                    <input type="hidden" name="roomid" value="${r.roomId}">
+                                </div>
+                            </div>
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <p>Rooms Name ${r.roomName}</p>
+                                    <input type="hidden" name="roomName" value="${r.roomName}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Type Room : ${r.type}</p> 
+                                    <p>Type Room : ${r.type}</p>
+                                    <input type="hidden" name="roomType" value="${r.type}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Capacity : ${r.capacity}</p> 
+                                    <p>Capacity : ${r.capacity}</p>
+                                    <input type="hidden" name="roomCapacity" value="${r.capacity}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>Price : ${r.price}</p>
+                                    <input type="hidden" name="roomPrice" value="${r.price}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Check in :</p>
+                                    <p>Check in : ${stringDateStart}</p>
+                                    <input type="hidden" name="dateStart" value="${stringDateStart}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Check out :</p>
+                                    <p>Check out : ${stringDateEnd}</p>
+                                    <input type="hidden" name="dateEnd" value="${stringDateEnd}">
                                 </div>
                             </div>
                             <div class="row">
@@ -203,6 +214,7 @@
                                     <p class="description">
                                         Description : ${r.roomDes}
                                     </p>
+                                    <input type="hidden" name="roomid" value="${r.roomDes}">
                                 </div>
                             </div>
                             <div class="row">
@@ -210,16 +222,16 @@
                                     <a id="flip" href="#">Service<i class="fa fa-chevron-down" aria-hidden="true"></i></a>
                                     <div id="panel" style="display:none;">
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Food 100 Baht</label>
+                                            <label><input name="check1" type="checkbox" value="1">Food 100 Baht</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Food 100 Baht</label>
+                                            <label><input name="check2" type="checkbox" value="1">Food 100 Baht</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Twin beds 100 Baht</label>
+                                            <label><input name="check3" type="checkbox" value="1">Twin beds 100 Baht</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Large bed 100 Baht</label>
+                                            <label><input name="check4" type="checkbox" value="1">Large bed 100 Baht</label>
                                         </div>
                                     </div>
                                 </div>
@@ -231,11 +243,11 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </c:forEach>
-            </div>
-        </form>
+                </div>
+            </c:forEach>
+        </div>
     </body>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

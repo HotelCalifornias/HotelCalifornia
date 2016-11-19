@@ -108,11 +108,11 @@
                         <form class="form-inline text-center topsearch" action="SearchHotelRooms" method="post">                          
                             <div class="form-group">
                                 <label>Check in:</label>
-                                <input onchange="DateCheck()" id="StartDate" type="date" name="start_date" class="form-control"/>
+                                <input onchange="DateCheck()" id="StartDate" type="date" name="start_date" class="form-control" required/>
                             </div>
                             <div class="form-group">
                                 <label>Check out:</label>
-                                <input onchange="DateCheck()" id="EndDate" type="date" name="end_date" class="form-control"/>
+                                <input onchange="DateCheck()" id="EndDate" type="date" name="end_date" class="form-control" required/>
                             </div>
                             <div class="form-group">
                                 <label>Room Type</label>
@@ -129,6 +129,9 @@
                 </div>
                 <br>
                 <br>
+                <center>
+                    <h1>${messageEmtry}</h1>
+                </center>
             <c:forEach items="${rooms}" var="r">
                 <div class="container">
                     <a href="DetailServlet?roomId=${r.roomId}">
@@ -151,34 +154,34 @@
             <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
             <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
             <script>
-                $(window).scroll(function () {
-                    if ($(".navbar").offset().top > 30) {
-                        $('#custom-nav').addClass('affix');
-                        $(".navbar-fixed-top").addClass("top-nav-collapse");
-                    } else {
-                        $('#custom-nav').removeClass('affix');
-                        $(".navbar-fixed-top").removeClass("top-nav-collapse");
-                    }
-                });
-                var today = new Date().toISOString().split('T')[0];
-                document.getElementsByName("start_date")[0].setAttribute('min', today);
-                document.getElementsByName("end_date")[0].setAttribute('min', today);
+                                    $(window).scroll(function () {
+                                        if ($(".navbar").offset().top > 30) {
+                                            $('#custom-nav').addClass('affix');
+                                            $(".navbar-fixed-top").addClass("top-nav-collapse");
+                                        } else {
+                                            $('#custom-nav').removeClass('affix');
+                                            $(".navbar-fixed-top").removeClass("top-nav-collapse");
+                                        }
+                                    });
+                                    var today = new Date().toISOString().split('T')[0];
+                                    document.getElementsByName("start_date")[0].setAttribute('min', today);
+                                    document.getElementsByName("end_date")[0].setAttribute('min', today);
 
-                function DateCheck()
-                {
-                    var StartDate = document.getElementById('StartDate').value;
-                    var EndDate = document.getElementById('EndDate').value;
-                    var eDate = new Date(EndDate);
-                    var sDate = new Date(StartDate);
-                    if (StartDate != '' && StartDate != '' && sDate > eDate)
-                    {
-                        alert("Please ensure that the End Date is greater than or equal to the Start Date.");
-                        document.getElementById("butSearch").disabled = true;
-                        return false;
-                    } else {
-                        document.getElementById("butSearch").disabled = false;
-                    }
-                }
+                                    function DateCheck()
+                                    {
+                                        var StartDate = document.getElementById('StartDate').value;
+                                        var EndDate = document.getElementById('EndDate').value;
+                                        var eDate = new Date(EndDate);
+                                        var sDate = new Date(StartDate);
+                                        if (StartDate != '' && StartDate != '' && sDate > eDate)
+                                        {
+                                            alert("Please ensure that the End Date is greater than or equal to the Start Date.");
+                                            document.getElementById("butSearch").disabled = true;
+                                            return false;
+                                        } else {
+                                            document.getElementById("butSearch").disabled = false;
+                                        }
+                                    }
             </script>
     </body>
 </html>

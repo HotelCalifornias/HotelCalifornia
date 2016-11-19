@@ -58,7 +58,7 @@ public class SearchHotelRoomsServlet extends HttpServlet {
         }
         List<SearchHotelRooms> rooms = SearchHotelRooms.findByDate(start, end, roomType);
         if(rooms == null){
-            request.setAttribute("message", "Room dose not exist!");
+            request.setAttribute("messageEmtry", "Room dose not exist!");
         }else{
             session.setAttribute("room", rooms);
             request.setAttribute("rooms", rooms);
