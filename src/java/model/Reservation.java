@@ -13,18 +13,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.ReadablePartial;
 
 /**
  *
  * @author Saraf
  */
 public class Reservation {
+
     private int accountId;
-    private int servicesId;
+    private String username;
     private String fname;
     private String lname;
     private String email;
     private String address;
+    
+    private int servicesId;
+    private String serviceDes;
+    private int servicePrice;
+    
     private int roomId;
     private String roomName;
     private int capacity;
@@ -32,10 +41,12 @@ public class Reservation {
     private String roomTypeName;
     private int roomPrice;
     private String roomDes;
+    
+    private int reservationId;
     private String date_from;
     private String date_to;
-    private String serviceDes;
-    private int servicePrice;
+    private int totalPrice;
+    
 
     public Reservation() {
     }
@@ -60,8 +71,14 @@ public class Reservation {
         this.servicePrice = servicePrice;
     }
 
-    
-    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public int getServicesId() {
         return servicesId;
     }
@@ -69,12 +86,25 @@ public class Reservation {
     public void setServicesId(int servicesId) {
         this.servicesId = servicesId;
     }
-    
-   
-    
 
     public String getRoomTypeName() {
         return roomTypeName;
+    }
+
+    public int getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(int reservationId) {
+        this.reservationId = reservationId;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public void setRoomTypeName(String roomTypeName) {
@@ -203,42 +233,50 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" + "accountId=" + accountId + ", servicesId=" + servicesId + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", address=" + address + ", roomId=" + roomId + ", roomName=" + roomName + ", capacity=" + capacity + ", roomType=" + roomType + ", roomTypeName=" + roomTypeName + ", roomPrice=" + roomPrice + ", roomDes=" + roomDes + ", date_from=" + date_from + ", date_to=" + date_to + ", serviceDes=" + serviceDes + ", servicePrice=" + servicePrice + '}';
+        return "Reservation{" + "accountId=" + accountId + ", username=" + username + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", address=" + address + ", servicesId=" + servicesId + ", serviceDes=" + serviceDes + ", servicePrice=" + servicePrice + ", roomId=" + roomId + ", roomName=" + roomName + ", capacity=" + capacity + ", roomType=" + roomType + ", roomTypeName=" + roomTypeName + ", roomPrice=" + roomPrice + ", roomDes=" + roomDes + ", reservationId=" + reservationId + ", date_from=" + date_from + ", date_to=" + date_to + ", totalPrice=" + totalPrice + '}';
     }
 
     
-    
-    public static void ormForUserDetail(ResultSet rs, Reservation reserv) throws SQLException{
+
+    public static void ormForUserDetail(ResultSet rs, Reservation reserv) throws SQLException {
         reserv.setAccountId(rs.getInt("accountId"));
+        reserv.setUsername(rs.getString("username"));
         reserv.setFname(rs.getString("fname"));
         reserv.setLname(rs.getString("lname"));
         reserv.setEmail(rs.getString("email"));
         reserv.setAddress(rs.getString("address"));
     }
-    
-    public static void ormForRoomDetail(ResultSet rs, Reservation reserv) throws SQLException{
+
+    public static void ormForRoomDetail(ResultSet rs, Reservation reserv) throws SQLException {
         reserv.setRoomId(rs.getInt("roomId"));
         reserv.setRoomName(rs.getString("roomName"));
         reserv.setCapacity(rs.getInt("capacity"));
         reserv.setRoomDes(rs.getString("roomDes"));
         reserv.setRoomType(rs.getInt("type"));
+        
         reserv.setRoomPrice(rs.getInt("price"));
     }
-    
-    public static void ormForServiceDetail(ResultSet rs, Reservation reserv) throws SQLException{
+
+    public static void ormForServiceDetail(ResultSet rs, Reservation reserv) throws SQLException {
         reserv.setServicesId(rs.getInt("roomServicesId"));
         reserv.setServiceDes(rs.getString("roomServicesDescription"));
         reserv.setServicePrice(rs.getInt("roomServicesPrice"));
     }
+
+    public int calculateTotalPrice(int roomPrice,int servicePrice){
+        this.totalPrice = roomPrice + servicePrice;
+        return totalPrice;
+    }
     
-    public static List<Reservation> showUserDetail(int accountId){
+    public static List<Reservation> showUserDetail(String username, String password) {
         Connection con = ConnectionBuilder.getCon();
         List<Reservation> reservation = new ArrayList();
         try {
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM ACCOUNTS WHERE ACCOUNTID = ?");
-            pst.setInt(1, accountId);
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM ACCOUNTS WHERE USERNAME = ? AND PASSWORD = ?");
+            pst.setString(1, username);
+            pst.setString(2, password);
             ResultSet rs = pst.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 Reservation r = new Reservation();
                 ormForUserDetail(rs, r);
                 reservation.add(r);
@@ -249,18 +287,23 @@ public class Reservation {
         }
         return reservation;
     }
-    
-    public static List<Reservation> showRoomDetail(int roomId){
+
+    public static List<Reservation> showRoomDetail(int roomId) {
         Connection con = ConnectionBuilder.getCon();
         List<Reservation> reservation = new ArrayList();
         try {
             PreparedStatement pst = con.prepareStatement("SELECT * FROM ROOMS WHERE ROOMID = ?");
             pst.setInt(1, roomId);
             ResultSet rs = pst.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 Reservation r = new Reservation();
                 ormForRoomDetail(rs, r);
                 reservation.add(r);
+                if(r.getRoomType() == 1){
+                    r.setRoomTypeName("Normal");
+                }else{
+                    r.setRoomTypeName("Delux");
+                }
             }
             con.close();
         } catch (SQLException ex) {
@@ -269,14 +312,13 @@ public class Reservation {
         return reservation;
     }
     
-    public static List<Reservation> showServicesDetail(int servicesId){
+    public static List<Reservation> showServicesDetail() {
         Connection con = ConnectionBuilder.getCon();
         List<Reservation> reservation = new ArrayList();
         try {
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM ROOMSERVICES WHERE ROOMSERVICESID = ?");
-            pst.setInt(1, servicesId);
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM ROOMSERVICES");
             ResultSet rs = pst.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 Reservation r = new Reservation();
                 ormForServiceDetail(rs, r);
                 reservation.add(r);
@@ -287,8 +329,32 @@ public class Reservation {
         }
         return reservation;
     }
-    
-    public void makeReservation(int roomId, String date_from, String date_to, int totalPrice){
+
+    public static List<Reservation> showServicesDetail(int servicesId) {
+        Connection con = ConnectionBuilder.getCon();
+        List<Reservation> reservation = new ArrayList();
+        try {
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM ROOMSERVICES WHERE ROOMSERVICESID = ?");
+            pst.setInt(1, servicesId);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                Reservation r = new Reservation();
+                ormForServiceDetail(rs, r);
+                reservation.add(r);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Reservation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return reservation;
+    }
+
+    public int countDate(DateTime dateStart, DateTime dateEnd) {
+        int days = Days.daysBetween(dateStart, dateEnd).getDays();
+        return days;
+    }
+
+    public void makeReservation(int roomId, String date_from, String date_to, int totalPrice) {
         Connection con = ConnectionBuilder.getCon();
         try {
             PreparedStatement pst = con.prepareStatement("INSERT INTO RESERVATION (ROOMID,DATE_FROM,DATE_TO,TOTALPRICE) VALUES (?,?,?,?)");
@@ -303,9 +369,5 @@ public class Reservation {
         }
     }
     
-    public static void main(String[] args) {
-        List<Reservation> re = Reservation.showServicesDetail(1);
-        System.out.println(re);
-    }
-    
+
 }

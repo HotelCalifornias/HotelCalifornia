@@ -48,6 +48,10 @@
         <servlet-name>ReservationServlet</servlet-name>
         <servlet-class>servlet.ReservationServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfirmReservationServlet</servlet-name>
+        <servlet-class>servlet.ConfirmReservationServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -78,7 +82,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReservationServlet</servlet-name>
-        <url-pattern>/ReservationServlet</url-pattern>
+        <url-pattern>/Reservation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmReservationServlet</servlet-name>
+        <url-pattern>/ConfirmReservation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

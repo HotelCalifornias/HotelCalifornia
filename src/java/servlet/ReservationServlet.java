@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.DetailRoom;
 import model.Login;
 import model.Reservation;
 
@@ -34,17 +35,40 @@ public class ReservationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        String servicePrice = request.getParameter("price");
+        String roomPrice = request.getParameter("roomPrice");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        HttpSession session = request.getSession();
-        if(session != null && session.getAttribute("login") != null){
-           Login l = (Login) session.getAttribute("login");
-           int accountId = l.getId();
-           List<Reservation> reservation = Reservation.showUserDetail(accountId);
-           request.setAttribute("account", reservation);
+        String reservService = "";
+        int totalPrice = 0;
+        int rPrice = Integer.parseInt(roomPrice);
+        int sPrice = Integer.parseInt(servicePrice);
+        if (session.getAttribute("roomsDe") != null) {
+            Reservation price = new Reservation();
+            totalPrice = price.calculateTotalPrice(rPrice, sPrice);
+            if (session != null && session.getAttribute("login") != null) {
+                Login l = new Login();
+                username = l.getUsername();
+                password = l.getPassword();
+                if (session.getAttribute("roomServices") != null) {
+                    Reservation r = new Reservation();
+                    int serviceId = r.getServicesId();
+                    List<Reservation> reservation = Reservation.showUserDetail(username,password);
+
+                    List<Reservation> reservationServices = Reservation.showServicesDetail(serviceId);
+
+                    request.setAttribute("servicesChoose", reservationServices);
+
+                    session.setAttribute("account", reservation);
+                }
+
+            }
+            session.setAttribute("totalPrice", totalPrice);
         }
-        getServletContext().getRequestDispatcher("/some.jsp").forward(request, response);
-        
+
+        getServletContext().getRequestDispatcher("/Reservation.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

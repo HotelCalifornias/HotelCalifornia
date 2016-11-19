@@ -194,7 +194,9 @@ public class SearchHotelRooms {
     
    
     public static void main(String[] args) {
-        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByDate("2016-11-14","2016-11-16",1);
-        System.out.println(sh);
+//        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByDate("2016-11-14","2016-11-16",1);
+//        System.out.println(sh);
+          List<SearchHotelRooms> s = (List) SearchHotelRooms.findRoomsInUse();
+          System.out.println(s);
     } 
 }

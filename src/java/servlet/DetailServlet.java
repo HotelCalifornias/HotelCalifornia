@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.DetailRoom;
+import model.Reservation;
 
 /**
  *
@@ -34,12 +35,14 @@ public class DetailServlet extends HttpServlet {
             throws ServletException, IOException {
             String roomId = request.getParameter("roomId");
 //            int roomid = Integer.parseInt(roomId);
-            
+            HttpSession session = request.getSession(true);
             List<DetailRoom> room = DetailRoom.findByRoom(roomId);
-            if(room == null){
+            List<Reservation> roomServices = Reservation.showServicesDetail();
+            if(room == null & roomServices != null){
             request.setAttribute("message", "Room dose not exist!");
         }else{
-            request.setAttribute("roomsDe", room);
+            session.setAttribute("roomsDe", room);
+            session.setAttribute("roomServices", roomServices);
         }
         getServletContext().getRequestDispatcher("/DetailRoom.jsp").forward(request, response);
     }

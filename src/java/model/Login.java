@@ -25,6 +25,7 @@ public class Login {
     }
     
     private Login(ResultSet rs) throws SQLException{
+        this.id = rs.getInt("accountId");
         this.username = rs.getString("username");
         this.password = rs.getString("password");
     }

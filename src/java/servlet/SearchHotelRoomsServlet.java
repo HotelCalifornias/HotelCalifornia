@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Reservation;
 import model.SearchHotelRooms;
+import org.joda.time.DateTime;
 
 /**
  *
@@ -37,6 +39,12 @@ public class SearchHotelRoomsServlet extends HttpServlet {
         String end = request.getParameter("end_date");
         String[] type = request.getParameterValues("rtype");
         int roomType = 0;
+        DateTime startDate = DateTime.parse(start);
+        DateTime endDate = DateTime.parse(end);
+        int totalDays = 0;
+        Reservation res = new Reservation();
+        totalDays = res.countDate(startDate, endDate);
+        
         HttpSession session = request.getSession(true);
         if(start == null && end == null){
             start = "";
@@ -54,6 +62,9 @@ public class SearchHotelRoomsServlet extends HttpServlet {
         }else{
             session.setAttribute("room", rooms);
             request.setAttribute("rooms", rooms);
+            session.setAttribute("stringDateStart",start);
+            session.setAttribute("stringDateEnd", end);
+            session.setAttribute("days", totalDays);
         }
         getServletContext().getRequestDispatcher("/SearchRooms.jsp").forward(request, response);
         }
