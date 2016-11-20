@@ -67,16 +67,20 @@
                                     <p class="control">
                                         <input class="input" name="password" type="Password" placeholder="Password" required>
                                     </p>
+                                    <p class="control" style="color: red">
+                                        ${message}
+                                    </p>
                                     <p class="control is-pulled-right">
                                         <input type="submit" class="button is-primary is-outlined is-pulled-right" value="Login"> 
                                     </p>
                                 </form>
-
+                                
                                 <button id="flip" type="button" class="button is-danger is-outlined is-pulled-right" style="margin-right:5px;" 
                                         data-toggle="modal" data-target="#myModal">
                                     Register
                                 </button>
                                 <br><br>
+                                
                                 <div id="panel">
                                     <h2 class="title is-2">Register now</h2>
                                     <form action="RegisterServlet" method="get">
