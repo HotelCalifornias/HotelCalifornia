@@ -29,7 +29,7 @@ public class Login {
     }
     
     private Login(ResultSet rs) throws SQLException{
-        this.id = rs.getInt("accountId");
+        this.id = rs.getInt("accountid");
         this.username = rs.getString("username");
         this.password = rs.getString("password");
         this.fname = rs.getString("fname");

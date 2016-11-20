@@ -113,7 +113,7 @@ public class DetailRoom {
 
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM rooms where roomId = ?");
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM rooms where roomid = ?");
             pstm.setString(1, roomId);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {

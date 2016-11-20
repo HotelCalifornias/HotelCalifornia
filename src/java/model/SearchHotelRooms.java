@@ -29,11 +29,11 @@ public class SearchHotelRooms {
     }
     
     public SearchHotelRooms(ResultSet rs) throws SQLException {
-        this.roomId = rs.getInt("roomId");
-        this.roomName = rs.getString("roomName");
+        this.roomId = rs.getInt("roomid");
+        this.roomName = rs.getString("roomname");
         this.capacity = rs.getInt("capacity");
         this.type = rs.getInt("type");
-        this.roomDes = rs.getString("roomDes");
+        this.roomDes = rs.getString("roomdes");
         this.price = rs.getInt("price");
     }
 
@@ -106,7 +106,7 @@ public class SearchHotelRooms {
 
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from hotelrooms where roomnumber like ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from rooms where roomnumber like ?");
             pstm.setString(1, param + "%");
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
@@ -130,8 +130,8 @@ public class SearchHotelRooms {
         SearchHotelRooms r = null;
         Connection con = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pst = con.prepareStatement("select * from rooms where roomId in"
-                    + " (select roomId from reservation)");
+            PreparedStatement pst = con.prepareStatement("select * from rooms where roomid in"
+                    + " (select roomid from reservation)");
             pst.executeQuery();
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
@@ -156,8 +156,8 @@ public class SearchHotelRooms {
 
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from rooms where roomId not in"
-                    + "(select roomId from reservation where (date_from between ? and ?) or (date_to between ? and ?)) and type = ?");
+            PreparedStatement pstm = conn.prepareStatement("select * from rooms where roomid not in"
+                    + "(select roomid from reservation where (date_from between ? and ?) or (date_to between ? and ?)) and type = ?");
             pstm.setString(1,  start);
             pstm.setString(2,  end);
             pstm.setString(3,  start);
@@ -185,7 +185,7 @@ public class SearchHotelRooms {
 
         Connection conn = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pstm = conn.prepareStatement("select * from rooms where roomId not in(select roomId from reservation )");
+            PreparedStatement pstm = conn.prepareStatement("select * from rooms where roomid not in(select roomid from reservation )");
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 r = new SearchHotelRooms(rs);

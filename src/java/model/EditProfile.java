@@ -88,7 +88,7 @@ public class EditProfile {
     
     public int editProfile(String fname, String lname, String email, String address, String username, String password) throws SQLException{
         Connection con = ConnectionBuilder.getCon();
-        PreparedStatement pst = con.prepareStatement("UPDATE ACCOUNTS SET FNAME = ?,LNAME = ?,EMAIL = ?,ADDRESS = ? WHERE USERNAME = ? AND PASSWORD = ?");
+        PreparedStatement pst = con.prepareStatement("UPDATE accounts SET fname = ?,lname = ?,email = ?,address = ? WHERE username = ? AND password = ?");
         pst.setString(1, fname);
         pst.setString(2, lname);
         pst.setString(3, email);

@@ -239,7 +239,7 @@ public class Reservation {
     
 
     public static void ormForUserDetail(ResultSet rs, Reservation reserv) throws SQLException {
-        reserv.setAccountId(rs.getInt("accountId"));
+        reserv.setAccountId(rs.getInt("accountid"));
         reserv.setUsername(rs.getString("username"));
         reserv.setFname(rs.getString("fname"));
         reserv.setLname(rs.getString("lname"));
@@ -248,19 +248,19 @@ public class Reservation {
     }
 
     public static void ormForRoomDetail(ResultSet rs, Reservation reserv) throws SQLException {
-        reserv.setRoomId(rs.getInt("roomId"));
-        reserv.setRoomName(rs.getString("roomName"));
+        reserv.setRoomId(rs.getInt("roomid"));
+        reserv.setRoomName(rs.getString("roomname"));
         reserv.setCapacity(rs.getInt("capacity"));
-        reserv.setRoomDes(rs.getString("roomDes"));
+        reserv.setRoomDes(rs.getString("roomdes"));
         reserv.setRoomType(rs.getInt("type"));
         
         reserv.setRoomPrice(rs.getInt("price"));
     }
 
     public static void ormForServiceDetail(ResultSet rs, Reservation reserv) throws SQLException {
-        reserv.setServicesId(rs.getInt("roomServiceId"));
-        reserv.setServiceDes(rs.getString("roomServiceDescription"));
-        reserv.setServicePrice(rs.getInt("roomServicePrice"));
+        reserv.setServicesId(rs.getInt("roomserviceid"));
+        reserv.setServiceDes(rs.getString("roomservicedescription"));
+        reserv.setServicePrice(rs.getInt("roomserviceprice"));
     }
 
     public int calculateTotalPrice(int roomPrice,int servicePrice){
@@ -272,7 +272,7 @@ public class Reservation {
         Connection con = ConnectionBuilder.getCon();
         List<Reservation> reservation = new ArrayList();
         try {
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM ACCOUNTS WHERE USERNAME = ? AND PASSWORD = ?");
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM accounts WHERE username = ? AND password = ?");
             pst.setString(1, username);
             pst.setString(2, password);
             ResultSet rs = pst.executeQuery();
@@ -292,7 +292,7 @@ public class Reservation {
         Connection con = ConnectionBuilder.getCon();
         List<Reservation> reservation = new ArrayList();
         try {
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM ROOMS WHERE ROOMID = ?");
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM rooms WHERE roomid = ?");
             pst.setInt(1, roomId);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
@@ -316,7 +316,7 @@ public class Reservation {
         Connection con = ConnectionBuilder.getCon();
         List<Reservation> reservation = new ArrayList();
         try {
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM ROOMSERVICES");
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM roomservices");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 Reservation r = new Reservation();
@@ -334,7 +334,7 @@ public class Reservation {
         Connection con = ConnectionBuilder.getCon();
         List<Reservation> reservation = new ArrayList();
         try {
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM ROOMSERVICES WHERE ROOMSERVICEID = ?");
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM roomservices WHERE roomserviceid = ?");
             pst.setInt(1, servicesId);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
@@ -357,7 +357,7 @@ public class Reservation {
     public void makeReservation(int roomId,int accountId, String date_from, String date_to, int totalPrice) {
         Connection con = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pst = con.prepareStatement("INSERT INTO RESERVATION (ROOMID,ACCOUNTID,DATE_FROM,DATE_TO,TOTALPRICE) VALUES (?,?,?,?,?)");
+            PreparedStatement pst = con.prepareStatement("INSERT INTO reservation (roomid,accountid,date_from,date_to,totalprice) VALUES (?,?,?,?,?)");
             pst.setInt(1, roomId);
             pst.setInt(2, accountId);
             pst.setString(3, date_from);

@@ -18,7 +18,7 @@ public class ConnectionBuilder {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://ap-cdbr-azure-southeast-b.cloudapp.net/acsm_6a1a5740a3b05cf?useUnicode=true&characterEncoding=UTF-8","b81eb6dd3c81c4","52b81b4a");          
+            conn = DriverManager.getConnection("jdbc:mysql://52.221.240.234/test_db_for_kong?useUnicode=true&characterEncoding=UTF-8","kong","kong123");          
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
