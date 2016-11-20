@@ -12,82 +12,131 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
-    <body> 
+    <body>
         <form action="ConfirmReservation" method="POST">
-            <c:forEach items="${login}" var="a" varStatus="ac">
-                <table>
-                    <tr>
-                        <td>Account : <input type="text" value="${a.username}" disabled/></td>
-                    </tr>
-                    <tr>
-                        <td>First Name : <input type="text"  value="${a.fname}" disabled/></td>
-                    </tr>
-                    <tr>
-                        <td>Last Name : <input type="text" value="${a.lname}" disabled/></td>
-                    </tr>
-                    <tr>
-                        <td>Email : <input type="text" value="${a.email}" disabled/></td>
-                    </tr>
-                    <tr>
-                        <td>Address : <textarea rows="10" cols="60" disabled>${a.address}</textarea></td>
-                    </tr>
-                </table>  
-            </c:forEach>
-            <c:forEach items="${roomsDe}" var="r">
-                <table>
-                    <tr>
-                        <td><input type="hidden" name="roomId" value="${r.roomId}"></td>
-                        <td></td>
-                            
-                    </tr>
-                    <tr>
-                        <td>Room Number : </td>
-                        <td><input type="text" value="${r.roomName}" disabled/></td>
-                    </tr>
-                    <tr>
-                        <td>Room Type : </td>
-                        <td><input type="text" value="${r.roomDes}" disabled/></td>
-                    </tr>
-                    <tr>
-                        <td>Capacity : </td>
-                        <td><input type="text" value="${r.capacity}" disabled/></td>
-                    </tr>
-                    <c:forEach items="${servicesChoose}" var="s" varStatus="sr">
-                        <tr>
-                            <td>Services : </td>
-                            <td><input type="text" value="${s[sr.index].serviceDes}" disabled/></td>
-                        </tr>
-                    </c:forEach>
-                    <tr>
-                        <td>Total Price : </td>
-                        <td><input type="hidden" name="t" value="${totalPrice}"/><input type="text" value="${totalPrice}" disabled/></td>
-                    </tr>
-                    <tr>
-                        <td>Reservation Date From <input type="hidden"  name="startDate" value="${stringDateStart}"/>
-                            <input type="text" value="${stringDateStart}" disabled/> To </td>
-                        <td><input type="hidden" name="endDate" value="${stringDateEnd}"/>
-                            <input type="text" value="${stringDateEnd}" disabled/></td>
-                    </tr>
-                    <tr>
-                        <td>Total Days </td>
-                        <td><input type="text" value="${days}" disabled/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="button" value="Cancel"/></td>
-                        <td><input type="submit" value="Confirm"/></td>
-                    </tr>
+            <div class="container">
+                <c:forEach items="${roomsDe}" var="r">
+                    <div class="row">
+                        <h1 class="text-center">Confirmation</h1>
+                        <div class="col-md-12">
+                            <div class="alert alert-success">
+                                <strong>Confirm!</strong> You should read this message.
+                            </div>
 
-                </table>  
-            </c:forEach>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Detail</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>${r.roomDes}
+                                            <input type="hidden" value="${r.roomDes}"/>
+                                        </td>
+                                        <td>RoomID : ${r.roomId}
+                                            <input type="hidden" name="roomId" value="${r.roomId}"><br>
+                                            Roomname : ${r.roomName}
+                                            <input type="hidden" value="${r.roomName}"/><br>
+                                            Capacity : ${r.capacity}
+                                            <input type="hidden" value="${r.capacity}"/><br>
+                                            From : ${stringDateStart}
+                                            <input type="hidden"  name="startDate" value="${stringDateStart}"/><br>
+                                            To : ${stringDateEnd}
+                                            <input type="hidden" name="endDate" value="${stringDateEnd}"/><br>
+                                            Total Days : ${days}
+                                            <input type="hidden" value="${days}"/><br>
+                                        </td>
+                                        <td>${r.price}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1>Service</h1>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Service type</th>
+                                        <th class="text-center">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Food<br>
+                                            Food2<br>
+                                            Twin Beds<br>
+                                            Large
+                                        </td>
+                                        <td class="text-center">${ftype}<br>
+                                            ${f2type}<br>
+                                            ${twin}<br>
+                                            ${large}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h1>Detail Account</h1>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Profile</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${login}" var="a" varStatus="ac">
+                                        <tr>
+                                            <td>Account :<br>
+                                                First Name :<br>
+                                                Last Name :<br>
+                                                Email :<br>
+                                                Address :</td>
+                                            <td>${a.username}
+                                                <input type="hidden" value="${a.username}"/><br>
+                                                ${a.fname}
+                                                <input type="hidden"  value="${a.fname}"/><br>
+                                                ${a.lname}
+                                                <input type="hidden" value="${a.lname}"/><br>
+                                                ${a.email}
+                                                <input type="hidden" value="${a.email}"/><br>
+                                                ${a.address}
+                                                <input type="hidden" value="${a.address}"/>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="well text-right">Total : ${totalPrice}
+                                <input type="hidden" name="t" value="${totalPrice}"/>
+                            </h3>
+                        </div>
+                    </div>
+                </c:forEach>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success pull-right">Confirm</button>
+                    </div>
+                </div>
+                <br><br>
+            </div>
         </form>
-
-    </body> 
-
-
-
-
-
-
-
+    </body>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </html>

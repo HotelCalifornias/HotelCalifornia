@@ -222,10 +222,10 @@
                                     <a id="flip" href="#">Service<i class="fa fa-chevron-down" aria-hidden="true"></i></a>
                                     <div id="panel" style="display:none;">
                                         <div class="checkbox">
-                                            <label><input name="check1" type="checkbox" value="1">Food 100 Baht</label>
+                                            <label><input name="check1" type="checkbox" value="1">Food 500 Baht</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input name="check2" type="checkbox" value="1">Food 100 Baht</label>
+                                            <label><input name="check2" type="checkbox" value="1">Food 500 Baht</label>
                                         </div>
                                         <div class="checkbox">
                                             <label><input name="check3" type="checkbox" value="1">Twin beds 100 Baht</label>
