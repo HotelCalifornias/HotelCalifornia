@@ -57,13 +57,13 @@ public class SendMail {
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("penthaizza@gmail.com","");
+                return new PasswordAuthentication("patiphanth@gmail.com","54E9B250@");
             }
         });
         
         try {
             MimeMessage msg = new MimeMessage(session);
-            msg.setFrom("penthaizza@gmail.com");
+            msg.setFrom("patiphanth@gmail.com");
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
             msg.setSubject(subject);
             msg.setText(message);
