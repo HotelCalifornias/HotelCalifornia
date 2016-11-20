@@ -56,6 +56,14 @@
         <servlet-name>EditProfileServlet</servlet-name>
         <servlet-class>servlet.EditProfileServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginAdminServlet</servlet-name>
+        <servlet-class>servlet.LoginAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutAdminServlet</servlet-name>
+        <servlet-class>servlet.LogoutAdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>EditProfileServlet</servlet-name>
         <url-pattern>/EditProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginAdminServlet</servlet-name>
+        <url-pattern>/LoginAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutAdminServlet</servlet-name>
+        <url-pattern>/LogoutAdminServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

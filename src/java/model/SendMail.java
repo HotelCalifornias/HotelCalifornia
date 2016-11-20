@@ -63,7 +63,7 @@ public class SendMail {
         
         try {
             MimeMessage msg = new MimeMessage(session);
-            msg.setFrom("patiphanth@gmail.com");
+            msg.setFrom("HotelCalifornia");
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
             msg.setSubject(subject);
             msg.setText(message);

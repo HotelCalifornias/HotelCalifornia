@@ -179,7 +179,29 @@ public class SearchHotelRooms {
         }
         return rooms;
     }
+    public static List<SearchHotelRooms> findEmtry(){
+        List<SearchHotelRooms> rooms = null;
+        SearchHotelRooms r = null;
 
+        Connection conn = ConnectionBuilder.getCon();
+        try {
+            PreparedStatement pstm = conn.prepareStatement("select * from rooms where roomId not in(select roomId from reservation )");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                r = new SearchHotelRooms(rs);
+                if (rooms == null) {
+                    rooms = new ArrayList();
+                }
+                rooms.add(r);
+            }
+            rs.close();
+            pstm.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return rooms;
+    }
     @Override
     public String toString() {
         return  "---------------\n"
