@@ -163,6 +163,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>Check out : ${stringDateEnd}</p>
+                                    <input type="hidden" name="days" value="${days}">
                                     <input type="hidden" name="dateEnd" value="${stringDateEnd}">
                                 </div>
                             </div>

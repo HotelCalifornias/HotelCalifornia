@@ -13,5 +13,8 @@
     </head>
     <body>
         <h1>Make Reservation Success !!</h1>
+        <form action="RemoveSession" method="POST">
+            <input type="submit" value="Home"/>
+        </form>
     </body>
 </html>

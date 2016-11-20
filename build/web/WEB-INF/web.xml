@@ -64,6 +64,10 @@
         <servlet-name>LogoutAdminServlet</servlet-name>
         <servlet-class>servlet.LogoutAdminServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RemoveSessionServlet</servlet-name>
+        <servlet-class>servlet.RemoveSessionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>LogoutAdminServlet</servlet-name>
         <url-pattern>/LogoutAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveSessionServlet</servlet-name>
+        <url-pattern>/RemoveSession</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
