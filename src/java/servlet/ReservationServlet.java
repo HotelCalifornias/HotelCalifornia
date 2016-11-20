@@ -78,13 +78,13 @@ public class ReservationServlet extends HttpServlet {
                 if (session.getAttribute("roomServices") != null) {
                     Reservation r = new Reservation();
                     int serviceId = r.getServicesId();
-                    List<Reservation> reservation = Reservation.showUserDetail(username,password);
+//                    List<Reservation> reservation = Reservation.showUserDetail(username,password);
 
                     List<Reservation> reservationServices = Reservation.showServicesDetail(serviceId);
 
                     request.setAttribute("servicesChoose", reservationServices);
 
-                    session.setAttribute("account", reservation);
+//                    session.setAttribute("account", reservation);
                 }
 
             }

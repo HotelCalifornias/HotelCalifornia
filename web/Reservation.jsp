@@ -15,27 +15,22 @@
     </head>
     <body> 
         <form action="ConfirmReservation" method="POST">
-            <c:forEach items="${account}" var="a" varStatus="ac">
+            <c:forEach items="${login}" var="a" varStatus="ac">
                 <table>
                     <tr>
-                        <td>Account : <input type="text" disabled/></td>
-                        <td><input type="text" value="${a.username}" disabled/></td>
+                        <td>Account : <input type="text" value="${a.username}" disabled/></td>
                     </tr>
                     <tr>
-                        <td>First Name : <input type="text" disabled/></td>
-                        <td><input type="text"  value="${a.fname}" disabled/></td>
+                        <td>First Name : <input type="text"  value="${a.fname}" disabled/></td>
                     </tr>
                     <tr>
-                        <td>Last Name : <input type="text" disabled/></td>
-                        <td><input type="text" value="${a.lname}" disabled/></td>
+                        <td>Last Name : <input type="text" value="${a.lname}" disabled/></td>
                     </tr>
                     <tr>
-                        <td>Email : <input type="text" disabled/></td>
-                        <td><input type="text" value="${a.email}" disabled/></td>
+                        <td>Email : <input type="text" value="${a.email}" disabled/></td>
                     </tr>
                     <tr>
-                        <td>Address : <input type="text" disabled/></td>
-                        <td><input type="text" value="${a.address}" disabled/></td>
+                        <td>Address : <textarea rows="10" cols="60" disabled>${a.address}</textarea></td>
                     </tr>
                 </table>  
             </c:forEach>

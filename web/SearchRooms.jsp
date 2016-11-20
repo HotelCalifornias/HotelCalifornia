@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/hover.css/2.0.2/hover-min.css">
         <!-- animate.css -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.2/animate.min.css">
+
+        <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
         <style>
             #custom-nav.affix {
                 min-width: 100%;
@@ -122,7 +124,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button id="butSearch" type="submit" class="btn btn-primary">Search</button>
+                                <button onclick="DateCheck()" id="butSearch" type="submit" class="btn btn-primary">Search</button>
                             </div>
                         </form>
                     </div>
@@ -131,7 +133,7 @@
                 <br>
                 <center>
                     <h1>${messageEmtry}</h1>
-                </center>
+            </center>
             <c:forEach items="${rooms}" var="r">
                 <div class="container">
                     <a href="DetailServlet?roomId=${r.roomId}">
@@ -151,37 +153,41 @@
                     </a>
                 </div>
             </c:forEach>
-            <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-            <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-            <script>
-                                    $(window).scroll(function () {
-                                        if ($(".navbar").offset().top > 30) {
-                                            $('#custom-nav').addClass('affix');
-                                            $(".navbar-fixed-top").addClass("top-nav-collapse");
-                                        } else {
-                                            $('#custom-nav').removeClass('affix');
-                                            $(".navbar-fixed-top").removeClass("top-nav-collapse");
-                                        }
-                                    });
-                                    var today = new Date().toISOString().split('T')[0];
-                                    document.getElementsByName("start_date")[0].setAttribute('min', today);
-                                    document.getElementsByName("end_date")[0].setAttribute('min', today);
-
-                                    function DateCheck()
-                                    {
-                                        var StartDate = document.getElementById('StartDate').value;
-                                        var EndDate = document.getElementById('EndDate').value;
-                                        var eDate = new Date(EndDate);
-                                        var sDate = new Date(StartDate);
-                                        if (StartDate != '' && StartDate != '' && sDate > eDate)
-                                        {
-                                            alert("Please ensure that the End Date is greater than or equal to the Start Date.");
-                                            document.getElementById("butSearch").disabled = true;
-                                            return false;
-                                        } else {
-                                            document.getElementById("butSearch").disabled = false;
-                                        }
-                                    }
-            </script>
+        </div>
     </body>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(".navbar").offset().top > 30) {
+                $('#custom-nav').addClass('affix');
+                $(".navbar-fixed-top").addClass("top-nav-collapse");
+            } else {
+                $('#custom-nav').removeClass('affix');
+                $(".navbar-fixed-top").removeClass("top-nav-collapse");
+            }
+        });
+
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("start_date")[0].setAttribute('min', today);
+        document.getElementsByName("end_date")[0].setAttribute('min', today);
+
+        function DateCheck()
+        {
+            var StartDate = document.getElementById('StartDate').value;
+            var EndDate = document.getElementById('EndDate').value;
+            var eDate = new Date(EndDate);
+            var sDate = new Date(StartDate);
+            if (StartDate != '' && StartDate != '' && sDate >= eDate)
+            {
+                swal("Wrong Input", "Please ensure that the End Date is greater than or equal to the Start Date.", "warning");
+                document.getElementById("butSearch").disabled = true;
+                return false;
+            } else {
+                document.getElementById("butSearch").disabled = false;
+            }
+        }
+        ;
+    </script>
 </html>

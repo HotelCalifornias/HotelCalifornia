@@ -308,15 +308,15 @@
             var EndDate = document.getElementById('EndDate').value;
             var eDate = new Date(EndDate);
             var sDate = new Date(StartDate);
-            if (StartDate != '' && StartDate != '' && sDate > eDate)
+            if (StartDate != '' && StartDate != '' && sDate >= eDate)
             {
-                alert("Please ensure that the End Date is greater than or equal to the Start Date.");
+                swal("Wrong Input","Please ensure that the End Date is greater than or equal to the Start Date.","warning");
                 document.getElementById("butSearch").disabled = true;
                 return false;
             }
             else{
                 document.getElementById("butSearch").disabled = false;
             }
-        }
+        };
     </script>
 </html>

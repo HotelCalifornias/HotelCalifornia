@@ -175,7 +175,7 @@
                             </div>
                                 <div class="row">
                                 <div class="col-md-12">
-                                    <p>Rooms Name ${r.roomName}</p>
+                                    <p>Rooms Name : ${r.roomName}</p>
                                     <input type="hidden" name="roomName" value="${r.roomName}">
                                 </div>
                             </div>
