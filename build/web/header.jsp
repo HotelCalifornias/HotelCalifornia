@@ -78,56 +78,49 @@
     <div class="modal-dialog">
         <!-- content -->
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #179b77">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title text-center" style="color: #fff">Profile</h3>
-            </div>
-            <div class="modal-body">
-                <form action="EditProfile" method="POST">
+            <form action="EditProfile" method="POST">
+                <div class="modal-header" style="background-color: #179b77">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title text-center" style="color: #fff">Profile</h3>
+                </div>
+                <div class="modal-body">
                     <c:forEach items="${login}" var="l">
-                        <table>
+                        <table class="table">
                             <tr>
                                 <td>Username : </td>
-                                <td><input type="text" value="${l.username}" disabled/>
+                                <td><input type="text" class="form-control" value="${l.username}" disabled/>
                                     <input type="hidden" name="eduser" value="${l.username}"/></td>
                             </tr>
                             <tr>
                                 <td>Password : </td>
-                                <td><input type="password" value="${l.password}" disabled/>
+                                <td><input type="password" class="form-control" value="${l.password}" disabled/>
                                     <input type="hidden" name="edpass" value="${l.password}"/></td>
                             </tr>
                             <tr>
                                 <td>First Name : </td>
-                                <td><input type="text" name="edfname" value="${l.fname}"/></td>
+                                <td><input type="text" class="form-control" name="edfname" value="${l.fname}"/></td>
                             </tr>
                             <tr>
                                 <td>Last Name : </td>
-                                <td><input type="text" name="edlname" value="${l.lname}"/></td>
+                                <td><input type="text" class="form-control" name="edlname" value="${l.lname}"/></td>
                             </tr>
                             <tr>
                                 <td>Email : </td>
-                                <td><input type="text" name="edemail" value="${l.email}"/></td>
+                                <td><input type="text" class="form-control" name="edemail" value="${l.email}"/></td>
                             </tr>
                             <tr>
                                 <td>Address : </td>
-                                <td><input type="text" name="edaddr" value="${l.address}"/></td>
+                                <td>
+                                    <textarea class="form-control" rows="5" name="edaddr">${l.address}</textarea>             
+                                </td>
                             </tr>
-                            <tr>
-                                <td><input type="submit" value="Edit"/></td>
-                                <td></td>
-                            </tr>
-                            
-
                         </table>  
                     </c:forEach> 
-                </form>
-
-
-
-            </div>
-            <div class="modal-footer">
-                <h3>${message}</h3>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Edit</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
