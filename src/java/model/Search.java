@@ -38,11 +38,11 @@ public class Search {
     }
 
     public Search(ResultSet rs) throws SQLException {
-        this.roomId = rs.getInt("roomId");
-        this.roomName = rs.getString("roomName");
+        this.roomId = rs.getInt("roomid");
+        this.roomName = rs.getString("roomname");
         this.capacity = rs.getInt("capacity");
         this.type = rs.getInt("type");
-        this.roomDes = rs.getString("roomDes");
+        this.roomDes = rs.getString("roomdes");
         this.price = rs.getInt("price");
     }
 

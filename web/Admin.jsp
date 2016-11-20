@@ -149,6 +149,7 @@
                                         <th>Description</th>
                                         <th>Capacity</th>
                                         <th>Price</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -158,6 +159,12 @@
                                             <td>${r.roomDes}</td>
                                             <td>${r.capacity}</td>
                                             <td>${r.price}</td>
+                                            <td>
+                                                <form action="DeleteRoom" method="POST">
+                                                    <input type="hidden" name="rid" value="${r.roomId}"/>
+                                                    <input type="submit" value="Delete"/>
+                                                </form>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -167,6 +174,7 @@
                                         <th></th>
                                         <th></th>
                                         <th>Instrument</th>
+                                        <th></th>
                                     </tr>
                                 </tfoot>
                             </table>
