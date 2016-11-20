@@ -39,20 +39,20 @@
 
                                     <tr>
                                         <td>${r.roomDes}
-                                            <input type="hidden" value="${r.roomDes}"/>
+                                            <input type="hidden" name="rt" value="${r.roomDes}"/>
                                         </td>
                                         <td>RoomID : ${r.roomId}
                                             <input type="hidden" name="roomId" value="${r.roomId}"><br>
                                             Roomname : ${r.roomName}
-                                            <input type="hidden" value="${r.roomName}"/><br>
+                                            <input type="hidden" name="rn" value="${r.roomName}"/><br>
                                             Capacity : ${r.capacity}
-                                            <input type="hidden" value="${r.capacity}"/><br>
+                                            <input type="hidden" name="rc" value="${r.capacity}"/><br>
                                             From : ${stringDateStart}
                                             <input type="hidden"  name="startDate" value="${stringDateStart}"/><br>
                                             To : ${stringDateEnd}
                                             <input type="hidden" name="endDate" value="${stringDateEnd}"/><br>
                                             Total Days : ${days}
-                                            <input type="hidden" value="${days}"/><br>
+                                            <input type="hidden" name="d" value="${days}"/><br>
                                         </td>
                                         <td>${r.price}</td>
                                     </tr>
@@ -106,11 +106,11 @@
                                             <td>${a.username}
                                                 <input type="hidden" value="${a.username}"/><br>
                                                 ${a.fname}
-                                                <input type="hidden"  value="${a.fname}"/><br>
+                                                <input type="hidden" name="f" value="${a.fname}"/><br>
                                                 ${a.lname}
-                                                <input type="hidden" value="${a.lname}"/><br>
+                                                <input type="hidden" name="l" value="${a.lname}"/><br>
                                                 ${a.email}
-                                                <input type="hidden" value="${a.email}"/><br>
+                                                <input type="hidden" name="e" value="${a.email}"/><br>
                                                 ${a.address}
                                                 <input type="hidden" value="${a.address}"/>
                                             </td>

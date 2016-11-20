@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.DetailRoom;
 import model.Reservation;
+import model.SendMail;
 
 /**
  *
@@ -45,6 +46,66 @@ public class ConfirmReservationServlet extends HttpServlet {
         if (session != null) {
             Reservation makeReserv = new Reservation();
             makeReserv.makeReservation(rId, startDate, endDate, t);
+            String fname = request.getParameter("f");
+            String lname = request.getParameter("l");
+            String sendTo = request.getParameter("e");
+            String roomName = request.getParameter("rn");
+            String roomType = request.getParameter("rt");
+            
+            String capacity = request.getParameter("rc");
+            String serv1 = "";
+            if(session.getAttribute("ftype") != null){
+                serv1 = "Yes";
+            }else{
+                serv1 = "No";
+            }
+            String serv2 = "";
+            if(session.getAttribute("f2type") != null){
+                serv2 = "Yes";
+            }else{
+                serv2 = "No";
+            }
+            String serv3 = "";
+            if(session.getAttribute("twin") != null){
+                serv3 = "Yes";
+            }else{
+                serv3 = "No";
+            }
+            String serv4 = "";
+            if(session.getAttribute("large") != null){
+                serv4 = "Yes";
+            }else{
+                serv4 = "No";
+            }
+            String dateStart = request.getParameter("startDate");
+            String dateEnd = request.getParameter("endDate");
+            String days = request.getParameter("d");
+            String price = request.getParameter("t");
+            String subject = "Hotel's Reservation";
+            String message = "Hello ! "+fname+" "+lname
+                +",\nThis Email has send from Hotel California Website."+"\n"
+                +"We have confirmed your information about the room reservation."+"\n"
+                +"Your confirmation contain the following information."+"\n"
+                +"________________________________________________________________________\n"
+                +"Room Detail : "+"\n"
+                +"Room Number : "+roomName+"\n"
+                +"Room Type : "+roomType+"\n"
+                +"Room Capacity : "+capacity+"\n"
+                +"________________________________________________________________________\n"
+                +"Services Detail : "+"\n"
+                +"Food : "+serv1+"\n"
+                +"Food : "+serv2+"\n"
+                +"Twins Beds : "+serv3+"\n"
+                +"Large Bed : "+serv4+"\n"
+                +"________________________________________________________________________\n"
+                +"Reservation From "+dateStart+" to "+dateEnd+"\n"
+                +"Total Reservation Days is "+days+"\n"
+                +"Total Price : "+price+"\n"
+                +"Thank you for choosing us.";
+            
+            if(sendTo != null && subject != null && message != null){                
+                SendMail.send(sendTo, subject, message);
+            }
         }
         getServletContext().getRequestDispatcher("/ReservationSuccess.jsp").forward(request, response);
     }

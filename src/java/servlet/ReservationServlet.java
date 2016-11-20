@@ -50,31 +50,31 @@ public class ReservationServlet extends HttpServlet {
         int large = 0;
         if(check1 != null){
             food = 500;
-            request.setAttribute("ftype", food);
+            session.setAttribute("ftype", food);
         }
         else{
-            request.setAttribute("ftype", "-");
+            session.setAttribute("ftype", "-");
         }
         if(check2 != null){
             food2 = 500;
-            request.setAttribute("f2type", food2);
+            session.setAttribute("f2type", food2);
         }
         else{
-            request.setAttribute("f2type", "-");
+            session.setAttribute("f2type", "-");
         }
         if(check3 != null){
             twin = 100;
-            request.setAttribute("twin", twin);
+            session.setAttribute("twin", twin);
         }
         else{
-            request.setAttribute("twin", "-");
+            session.setAttribute("twin", "-");
         }
         if(check4 != null){
             large = 100;
-            request.setAttribute("large", large);
+            session.setAttribute("large", large);
         }
         else{
-            request.setAttribute("large", "-");
+            session.setAttribute("large", "-");
         }
         
         int total = food+food2+twin+large;
