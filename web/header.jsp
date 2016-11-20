@@ -139,13 +139,13 @@
                         <div class="col-md-6">
                             <div class="form-group field">
                                 <label>Username :</label>
-                                <input type="text" class="form-control inputbox" name="username" id="username" required>
+                                <input type="text" class="form-control inputbox" pattern=".{6,}" title="Six or more characters" name="username" id="username" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group field">
                                 <label>Password :</label>
-                                <input type="password" class="form-control inputbox" name="password" id="password" required>
+                                <input type="password" class="form-control inputbox" pattern=".{6,}" title="Six or more characters" name="password" id="password" required>
                             </div>
                         </div>
                     </div>
@@ -165,24 +165,16 @@
                     </div>
                     <div class="form-group field">
                         <label>E-mail :</label>
-                        <input type="email" class="form-control inputbox" name="email" id="email" required>
+                        <input type="email" class="form-control inputbox" name="email" pattern=".{6,}" title="Six or more characters" id="email" required>
                     </div>
                     <div class="form-group field">
                         <label>Address :</label>
-                        <textarea class="form-control inputbox" rows="5" name="address" id="address" required></textarea>
+                        <textarea class="form-control inputbox" rows="5" name="address" minlength="6" id="address" required></textarea>
                     </div>
-                    <!--                    <div class="form-group">
-                                            <label>City :</label>
-                                            <input type="text" class="form-control" name="city">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Country :</label>
-                                            <input type="text" class="form-control" name="country">
-                                        </div>-->
                 </div>
                 <div class="modal-footer">
                     <div class="form-group actions">
-                        <button type="Submit" class="btn btn-default" id="valid" disabled="disabled">Submit</button>
+                        <button type="Submit" class="btn btn-default" id="valid" >Submit</button>
                     </div>
                 </div>
             </form>

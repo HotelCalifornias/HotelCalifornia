@@ -284,19 +284,19 @@
 //                   }
 //               });
 //            });
-            $('.field .inputbox').keyup(function () {
-                var empty = false;
-                $('.field .inputbox').each(function () {
-                    if ($(this).val().length == 0) {
-                        empty = true;
-                    }
-                });
-                if (empty) {
-                    $('.actions button').attr('disabled', 'disabled');
-                } else if ($(this).val().length > 5) {
-                    $('.actions button').attr('disabled', false);
-                }
-            });
+//            $('.field .inputbox').keyup(function () {
+//                var empty = false;
+//                $('.field .inputbox').each(function () {
+//                    if ($(this).val().length == 0) {
+//                        empty = true;
+//                    }
+//                });
+//                if (empty) {
+//                    $('.actions button').attr('disabled', 'disabled');
+//                } else if ($(this).val().length > 5) {
+//                    $('.actions button').attr('disabled', false);
+//                }
+//            });
         });
         var today = new Date().toISOString().split('T')[0];
         document.getElementsByName("start_date")[0].setAttribute('min', today);

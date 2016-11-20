@@ -50,12 +50,12 @@ public class LoginAdminServlet extends HttpServlet {
             request.setAttribute("total", total);
 
         }
-        if (session.getAttribute("login") == null) {
+        if (session.getAttribute("login2") == null) {
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
             response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
             response.setDateHeader("Expires", 0);
             if (l.checkLogin(username, password)) {
-//                session.setAttribute("username", ll.get(0).getUsername());
+                session.setAttribute("username", ll.get(0).getUsername());
                 session.setAttribute("login2", ll);
                 request.setAttribute("Success", ll);
             }

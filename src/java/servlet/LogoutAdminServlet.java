@@ -46,8 +46,8 @@ public class LogoutAdminServlet extends HttpServlet {
             request.setAttribute("total", total);
 
         }
-        if (session.getAttribute("login") != null) {
-            session.removeAttribute("login");
+        if (session.getAttribute("login2") != null) {
+            session.removeAttribute("login2");
             request.removeAttribute("Success");
         }
 

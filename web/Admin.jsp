@@ -71,8 +71,7 @@
                                         <input type="submit" class="button is-primary is-outlined is-pulled-right" value="Login"> 
                                     </p>
                                 </form>
-
-                                <button id="flip" type="button" class="button is-danger is-outlined is-pulled-right" style="margin-right:5px;" 
+<!--                                <button id="flip" type="button" class="button is-danger is-outlined is-pulled-right" style="margin-right:5px;" 
                                         data-toggle="modal" data-target="#myModal">
                                     Register
                                 </button>
@@ -101,13 +100,13 @@
                                             </button> 
                                         </p>
                                     </form>
-                                </div>
+                                </div>-->
                             </div>
                         </c:when>
                         <c:otherwise>
                             <div class="column">
                                 <h1 class="title is-1">WELCOME</h1>
-                                <!--<h3 class="title is-3">${sessionScope.username}</h3>-->
+                                <h3 class="title is-3">${sessionScope.username}</h3>
                                 <center>
                                     <form action="LogoutAdminServlet" method="get">
                                         <p class="control">
@@ -228,7 +227,8 @@
                                         <th>Database</th>
                                         <th></th>
                                         <th></th>
-                                        <th>Instrument</th>
+                                        <th>Detail</th>
+                                        <th></th>
                                     </tr>
                                 </tfoot>
                             </table>
