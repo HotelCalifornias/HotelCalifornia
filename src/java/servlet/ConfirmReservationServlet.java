@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.DetailRoom;
+import model.Login;
 import model.Reservation;
 import model.SendMail;
 
@@ -43,9 +44,11 @@ public class ConfirmReservationServlet extends HttpServlet {
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
         int rId = Integer.parseInt(roomId);
+        String id = request.getParameter("aid");
+        int accountId = Integer.parseInt(id);
         if (session != null) {
             Reservation makeReserv = new Reservation();
-            makeReserv.makeReservation(rId, startDate, endDate, t);
+            makeReserv.makeReservation(rId,accountId, startDate, endDate, t);
             String fname = request.getParameter("f");
             String lname = request.getParameter("l");
             String sendTo = request.getParameter("e");

@@ -104,6 +104,7 @@
                                                 Email :<br>
                                                 Address :</td>
                                             <td>${a.username}
+                                                <input type="hidden" name="aid" value="${a.id}"/>
                                                 <input type="hidden" value="${a.username}"/><br>
                                                 ${a.fname}
                                                 <input type="hidden" name="f" value="${a.fname}"/><br>

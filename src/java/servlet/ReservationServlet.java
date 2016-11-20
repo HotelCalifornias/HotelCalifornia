@@ -78,7 +78,6 @@ public class ReservationServlet extends HttpServlet {
         }
         
         int total = food+food2+twin+large;
-        System.out.println(total);
         
         int totalPrice = 0;
         int rPrice = Integer.parseInt(roomPrice);

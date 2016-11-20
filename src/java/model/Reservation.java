@@ -258,9 +258,9 @@ public class Reservation {
     }
 
     public static void ormForServiceDetail(ResultSet rs, Reservation reserv) throws SQLException {
-        reserv.setServicesId(rs.getInt("roomServicesId"));
-        reserv.setServiceDes(rs.getString("roomServicesDescription"));
-        reserv.setServicePrice(rs.getInt("roomServicesPrice"));
+        reserv.setServicesId(rs.getInt("roomServiceId"));
+        reserv.setServiceDes(rs.getString("roomServiceDescription"));
+        reserv.setServicePrice(rs.getInt("roomServicePrice"));
     }
 
     public int calculateTotalPrice(int roomPrice,int servicePrice){
@@ -334,7 +334,7 @@ public class Reservation {
         Connection con = ConnectionBuilder.getCon();
         List<Reservation> reservation = new ArrayList();
         try {
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM ROOMSERVICES WHERE ROOMSERVICESID = ?");
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM ROOMSERVICES WHERE ROOMSERVICEID = ?");
             pst.setInt(1, servicesId);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
@@ -354,14 +354,15 @@ public class Reservation {
         return days;
     }
 
-    public void makeReservation(int roomId, String date_from, String date_to, int totalPrice) {
+    public void makeReservation(int roomId,int accountId, String date_from, String date_to, int totalPrice) {
         Connection con = ConnectionBuilder.getCon();
         try {
-            PreparedStatement pst = con.prepareStatement("INSERT INTO RESERVATION (ROOMID,DATE_FROM,DATE_TO,TOTALPRICE) VALUES (?,?,?,?)");
+            PreparedStatement pst = con.prepareStatement("INSERT INTO RESERVATION (ROOMID,ACCOUNTID,DATE_FROM,DATE_TO,TOTALPRICE) VALUES (?,?,?,?,?)");
             pst.setInt(1, roomId);
-            pst.setString(2, date_from);
-            pst.setString(3, date_to);
-            pst.setInt(4, totalPrice);
+            pst.setInt(2, accountId);
+            pst.setString(3, date_from);
+            pst.setString(4, date_to);
+            pst.setInt(5, totalPrice);
             pst.executeUpdate();
             con.close();
         } catch (Exception e) {
