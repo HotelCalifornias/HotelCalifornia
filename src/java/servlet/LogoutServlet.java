@@ -30,14 +30,17 @@ public class LogoutServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            HttpSession session = request.getSession(true);
-            
-            if(session.getAttribute("login") != null){
-                session.removeAttribute("login");
-                request.removeAttribute("Success");
-            }
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+
+        HttpSession session = request.getSession(true);
+
+        if (session.getAttribute("login") != null) {
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+            response.setDateHeader("Expires", 0);
+            session.removeAttribute("login");
+            request.removeAttribute("Success");
+        }
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
