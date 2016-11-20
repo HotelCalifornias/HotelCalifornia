@@ -263,8 +263,8 @@ public class Reservation {
         reserv.setServicePrice(rs.getInt("roomserviceprice"));
     }
 
-    public int calculateTotalPrice(int roomPrice,int servicePrice){
-        this.totalPrice = roomPrice + servicePrice;
+    public int calculateTotalPrice(int days,int roomPrice,int servicePrice){
+        this.totalPrice = (roomPrice + servicePrice)*days;
         return totalPrice;
     }
     

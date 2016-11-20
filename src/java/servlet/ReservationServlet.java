@@ -44,6 +44,8 @@ public class ReservationServlet extends HttpServlet {
         String check2 = request.getParameter("check2");
         String check3 = request.getParameter("check3");
         String check4 = request.getParameter("check4");
+        String day = request.getParameter("days");
+        int days = Integer.parseInt(day);
         int food = 0;
         int food2 = 0;
         int twin = 0;
@@ -85,7 +87,7 @@ public class ReservationServlet extends HttpServlet {
         
         if (session.getAttribute("roomsDe") != null) {
             Reservation price = new Reservation();
-            totalPrice = price.calculateTotalPrice(rPrice, total);
+            totalPrice = price.calculateTotalPrice(days,rPrice, total);
             if (session != null && session.getAttribute("login") != null) {
                 Login l = new Login();
                 username = l.getUsername();
