@@ -83,10 +83,50 @@
                 <h3 class="modal-title text-center" style="color: #fff">Profile</h3>
             </div>
             <div class="modal-body">
-                <h3>${login}</h3><br>
+                <form action="EditProfile" method="POST">
+                    <c:forEach items="${login}" var="l">
+                        <table>
+                            <tr>
+                                <td>Username : </td>
+                                <td><input type="text" value="${l.username}" disabled/>
+                                    <input type="hidden" name="eduser" value="${l.username}"/></td>
+                            </tr>
+                            <tr>
+                                <td>Password : </td>
+                                <td><input type="password" value="${l.password}" disabled/>
+                                    <input type="hidden" name="edpass" value="${l.password}"/></td>
+                            </tr>
+                            <tr>
+                                <td>First Name : </td>
+                                <td><input type="text" name="edfname" value="${l.fname}"/></td>
+                            </tr>
+                            <tr>
+                                <td>Last Name : </td>
+                                <td><input type="text" name="edlname" value="${l.lname}"/></td>
+                            </tr>
+                            <tr>
+                                <td>Email : </td>
+                                <td><input type="text" name="edemail" value="${l.email}"/></td>
+                            </tr>
+                            <tr>
+                                <td>Address : </td>
+                                <td><input type="text" name="edaddr" value="${l.address}"/></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Edit"/></td>
+                                <td></td>
+                            </tr>
+                            
+
+                        </table>  
+                    </c:forEach> 
+                </form>
+
+
+
             </div>
             <div class="modal-footer">
-
+                <h3>${message}</h3>
             </div>
         </div>
     </div>

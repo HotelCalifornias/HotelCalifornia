@@ -149,7 +149,8 @@ public class Login {
     
     @Override
     public String toString() {
-        return "Login"+"\n"+"Username : "+username+"\n"+"Password : "+password+"\n"+"ID : "+id+"\n";
+        return "Login"+"\n"+"Username : "+username+"\n"+"Password : "+password+"\n"+"ID : "+id+"\n"+
+                "Fname : "+fname+"\n"+"Lname :"+lname+"\n"+"Email :"+email+"\n"+"Address :"+address;
     }
     
     public static void main(String[] args) {
