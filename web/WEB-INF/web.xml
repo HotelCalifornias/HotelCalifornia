@@ -72,6 +72,18 @@
         <servlet-name>DeleteRoomServlet</servlet-name>
         <servlet-class>servlet.DeleteRoomServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditRoomServlet</servlet-name>
+        <servlet-class>servlet.EditRoomServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertRoomServlet</servlet-name>
+        <servlet-class>servlet.InsertRoomServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeStatusServlet</servlet-name>
+        <servlet-class>servlet.ChangeStatusServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -127,6 +139,18 @@
     <servlet-mapping>
         <servlet-name>DeleteRoomServlet</servlet-name>
         <url-pattern>/DeleteRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditRoomServlet</servlet-name>
+        <url-pattern>/EditRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertRoomServlet</servlet-name>
+        <url-pattern>/InsertRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeStatusServlet</servlet-name>
+        <url-pattern>/ChangeStatus</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

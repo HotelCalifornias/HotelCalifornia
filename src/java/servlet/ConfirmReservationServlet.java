@@ -57,28 +57,28 @@ public class ConfirmReservationServlet extends HttpServlet {
             
             String capacity = request.getParameter("rc");
             String serv1 = "";
-            if(session.getAttribute("ftype") != null){
-                serv1 = "Yes";
-            }else{
+            if(session.getAttribute("ftype") == "-"){
                 serv1 = "No";
+            }else{
+                serv1 = "Yes";
             }
             String serv2 = "";
-            if(session.getAttribute("f2type") != null){
-                serv2 = "Yes";
-            }else{
+            if(session.getAttribute("f2type") == "-"){
                 serv2 = "No";
+            }else{
+                serv2 = "Yes";
             }
             String serv3 = "";
-            if(session.getAttribute("twin") != null){
-                serv3 = "Yes";
-            }else{
+            if(session.getAttribute("twin") == "-"){
                 serv3 = "No";
+            }else{
+                serv3 = "Yes";
             }
             String serv4 = "";
-            if(session.getAttribute("large") != null){
-                serv4 = "Yes";
-            }else{
+            if(session.getAttribute("large") == "-"){
                 serv4 = "No";
+            }else{
+                serv4 = "Yes";
             }
             String dateStart = request.getParameter("startDate");
             String dateEnd = request.getParameter("endDate");
@@ -96,8 +96,8 @@ public class ConfirmReservationServlet extends HttpServlet {
                 +"Room Capacity : "+capacity+"\n"
                 +"________________________________________________________________________\n"
                 +"Services Detail : "+"\n"
-                +"Food : "+serv1+"\n"
-                +"Food : "+serv2+"\n"
+                +"Non-Smoking Room : "+serv1+"\n"
+                +"Late Check-in : "+serv2+"\n"
                 +"Twins Beds : "+serv3+"\n"
                 +"Large Bed : "+serv4+"\n"
                 +"________________________________________________________________________\n"

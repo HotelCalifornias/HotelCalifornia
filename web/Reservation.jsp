@@ -73,10 +73,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Food<br>
-                                            Food2<br>
+                                        <td>Non-Smoking Room<br>
+                                            Late Check-in<br>
                                             Twin Beds<br>
-                                            Large
+                                            Large Bed
                                         </td>
                                         <td class="text-center">${ftype}<br>
                                             ${f2type}<br>

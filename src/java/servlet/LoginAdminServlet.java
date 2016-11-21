@@ -47,9 +47,10 @@ public class LoginAdminServlet extends HttpServlet {
             request.setAttribute("room", rooms);
             request.setAttribute("count", count);
             request.setAttribute("total", total);
+            session.setAttribute("roomid",rooms.get(0).getRoomId());
 
         }
-        if (session.getAttribute("login") == null) {
+        if (session.getAttribute("login2") == null) {
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
             response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
             response.setDateHeader("Expires", 0);

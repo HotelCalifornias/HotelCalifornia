@@ -46,32 +46,32 @@ public class ReservationServlet extends HttpServlet {
         String check4 = request.getParameter("check4");
         String day = request.getParameter("days");
         int days = Integer.parseInt(day);
-        int food = 0;
-        int food2 = 0;
-        int twin = 0;
+        int nonSmoke = 0;
+        int late = 0;
         int large = 0;
+        int twin = 0;
         if(check1 != null){
-            food = 500;
-            session.setAttribute("ftype", food);
+            nonSmoke = 500;
+            session.setAttribute("ftype", nonSmoke);
         }
         else{
             session.setAttribute("ftype", "-");
         }
         if(check2 != null){
-            food2 = 500;
-            session.setAttribute("f2type", food2);
+            late = 100;
+            session.setAttribute("f2type", late);
         }
         else{
             session.setAttribute("f2type", "-");
         }
-        if(check3 != null){
+        if(check4 != null){
             twin = 100;
             session.setAttribute("twin", twin);
         }
         else{
             session.setAttribute("twin", "-");
         }
-        if(check4 != null){
+        if(check3 != null){
             large = 100;
             session.setAttribute("large", large);
         }
@@ -79,7 +79,7 @@ public class ReservationServlet extends HttpServlet {
             session.setAttribute("large", "-");
         }
         
-        int total = food+food2+twin+large;
+        int total = nonSmoke+late+twin+large;
         
         int totalPrice = 0;
         int rPrice = Integer.parseInt(roomPrice);

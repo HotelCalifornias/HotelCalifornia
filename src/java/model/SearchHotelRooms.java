@@ -24,8 +24,17 @@ public class SearchHotelRooms {
     private int type;
     private String roomDes;
     private int price;
+    private String rtype;
 
     public SearchHotelRooms() {
+    }
+
+    public String getRtype() {
+        return rtype;
+    }
+
+    public void setRtype(String rtype) {
+        this.rtype = rtype;
     }
     
     public SearchHotelRooms(ResultSet rs) throws SQLException {
@@ -33,6 +42,11 @@ public class SearchHotelRooms {
         this.roomName = rs.getString("roomname");
         this.capacity = rs.getInt("capacity");
         this.type = rs.getInt("type");
+        if(type == 1){
+            this.rtype = "Normal";
+        }else{
+            this.rtype = "Delux";
+        }
         this.roomDes = rs.getString("roomdes");
         this.price = rs.getInt("price");
     }
@@ -135,6 +149,19 @@ public class SearchHotelRooms {
             pst.setInt(4, price);
             pst.setString(5, description);
             pst.setInt(6, roomid);
+            pst.executeUpdate();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void changeStatus(int reservationId){
+        Connection con = ConnectionBuilder.getCon();
+        try {
+            PreparedStatement pst = con.prepareStatement("UPDATE reservation SET status = ? WHERE reservationid = ?");
+            pst.setString(1, "Paid");
+            pst.setInt(2, reservationId);
             pst.executeUpdate();
             con.close();
         } catch (Exception e) {
