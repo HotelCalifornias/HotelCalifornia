@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.*;
 
-
 /**
  *
  * @author PT
@@ -48,16 +47,21 @@ public class LoginAdminServlet extends HttpServlet {
             request.setAttribute("room", rooms);
             request.setAttribute("count", count);
             request.setAttribute("total", total);
+            session.setAttribute("roomid",rooms.get(0).getRoomId());
 
         }
         if (session.getAttribute("login2") == null) {
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
             response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
             response.setDateHeader("Expires", 0);
-            if (l.checkLogin(username, password)) {
-                session.setAttribute("username", ll.get(0).getUsername());
+            if (username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")) {
+//          if (l.checkLogin(username,password)){
+//                session.setAttribute("username", ll.get(0).getUsername());
                 session.setAttribute("login2", ll);
                 request.setAttribute("Success", ll);
+            }else{
+                String message = "You're not an Admin!";
+                request.setAttribute("message", message);
             }
         }
         List<SearchHotelRooms> room2 = SearchHotelRooms.findEmtry();

@@ -263,40 +263,6 @@
                     window.location.hash = target;
                 });
             });
-//            $('#valid').on("click",function(){
-            var username = $("#username").val();
-            var password = $("#password").val();
-            var fname = $("#fname").val();
-            var lname = $("#lname").val();
-            var email = $("#email").val();
-            var address = $("#address").val();
-//               var Data = "username="+username+"&password="+password+"&fname="+fname+"&lname="+lname+"&email="+email+"&address="+address;
-//               
-//               $.ajax({
-//                   type : "GET",
-//                   url : "RegisterServlet",
-//                   data : Data,
-//                   error : function(){
-//                       swal("Fail!", "You clicked the button!", "error");
-//                   },
-//                   success : function(){                      
-//                       swal("Good job!", "You clicked the button!", "success");
-//                   }
-//               });
-//            });
-//            $('.field .inputbox').keyup(function () {
-//                var empty = false;
-//                $('.field .inputbox').each(function () {
-//                    if ($(this).val().length == 0) {
-//                        empty = true;
-//                    }
-//                });
-//                if (empty) {
-//                    $('.actions button').attr('disabled', 'disabled');
-//                } else if ($(this).val().length > 5) {
-//                    $('.actions button').attr('disabled', false);
-//                }
-//            });
         });
         var today = new Date().toISOString().split('T')[0];
         document.getElementsByName("start_date")[0].setAttribute('min', today);

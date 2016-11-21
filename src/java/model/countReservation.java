@@ -22,6 +22,7 @@ public class countReservation {
     private String dateFrom;
     private String dateTo;
     private int totalPrice;
+    private String status;
 
     public countReservation() {
     }
@@ -40,6 +41,15 @@ public class countReservation {
         this.dateFrom = rs.getString("date_from");
         this.dateTo = rs.getString("date_to");
         this.totalPrice = rs.getInt("totalprice");
+        this.status = rs.getString("status");
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getReservationId() {

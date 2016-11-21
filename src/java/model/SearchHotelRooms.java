@@ -24,8 +24,17 @@ public class SearchHotelRooms {
     private int type;
     private String roomDes;
     private int price;
+    private String rtype;
 
     public SearchHotelRooms() {
+    }
+
+    public String getRtype() {
+        return rtype;
+    }
+
+    public void setRtype(String rtype) {
+        this.rtype = rtype;
     }
     
     public SearchHotelRooms(ResultSet rs) throws SQLException {
@@ -33,6 +42,11 @@ public class SearchHotelRooms {
         this.roomName = rs.getString("roomname");
         this.capacity = rs.getInt("capacity");
         this.type = rs.getInt("type");
+        if(type == 1){
+            this.rtype = "Normal";
+        }else{
+            this.rtype = "Delux";
+        }
         this.roomDes = rs.getString("roomdes");
         this.price = rs.getInt("price");
     }
@@ -123,6 +137,64 @@ public class SearchHotelRooms {
             System.out.println(ex);
         }
         return rooms;
+    }
+    
+    public static void editRoom(String roomname,int capacity,int type,int price, String description,int roomid){
+        Connection con = ConnectionBuilder.getCon();
+        try {
+            PreparedStatement pst = con.prepareStatement("UPDATE rooms SET roomname = ?,capacity = ?,type = ?,price = ?,roomdes = ? WHERE roomid = ?");
+            pst.setString(1, roomname);
+            pst.setInt(2, capacity);
+            pst.setInt(3, type);
+            pst.setInt(4, price);
+            pst.setString(5, description);
+            pst.setInt(6, roomid);
+            pst.executeUpdate();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void changeStatus(int reservationId){
+        Connection con = ConnectionBuilder.getCon();
+        try {
+            PreparedStatement pst = con.prepareStatement("UPDATE reservation SET status = ? WHERE reservationid = ?");
+            pst.setString(1, "Paid");
+            pst.setInt(2, reservationId);
+            pst.executeUpdate();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void insertNewRoom(String roomName,int capacity,int type,int price,String description){
+        Connection con = ConnectionBuilder.getCon();
+        try {
+            PreparedStatement pst = con.prepareStatement("INSERT INTO rooms (roomname,capacity,type,price,roomdes) VALUES (?,?,?,?,?)");
+            pst.setString(1, roomName);
+            pst.setInt(2, capacity);
+            pst.setInt(3, type);
+            pst.setInt(4, price);
+            pst.setString(5, description);
+            pst.executeUpdate();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void deleteRoom(int roomId){
+        Connection con = ConnectionBuilder.getCon();
+        try {
+            PreparedStatement pst = con.prepareStatement("DELETE FROM rooms WHERE roomid = ?");
+            pst.setInt(1, roomId);
+            pst.executeUpdate();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     public static List<SearchHotelRooms> findRoomsInUse(){
@@ -218,7 +290,13 @@ public class SearchHotelRooms {
     public static void main(String[] args) {
 //        List<SearchHotelRooms> sh = (List)SearchHotelRooms.findByDate("2016-11-14","2016-11-16",1);
 //        System.out.println(sh);
-          List<SearchHotelRooms> s = (List) SearchHotelRooms.findRoomsInUse();
-          System.out.println(s);
+////          List<SearchHotelRooms> s = (List) SearchHotelRooms.findRoomsInUse();
+////          System.out.println(s);
+//            SearchHotelRooms s = new SearchHotelRooms();
+////            s.insertNewRoom("201", 4, 1, 1500, "Normal Room");
+////            s.deleteRoom(11);
+//            s.editRoom("101", 3, 1, 1500, "Normal Room", 1);
+            
+           
     } 
 }

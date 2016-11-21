@@ -138,7 +138,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Type Room : ${r.type}</p>
+                                    <p>Type Room : ${r.roomTypeName}</p>
                                     <input type="hidden" name="roomType" value="${r.type}">
                                 </div>
                             </div>
@@ -180,16 +180,16 @@
                                     <a id="flip" href="#">Service<i class="fa fa-chevron-down" aria-hidden="true"></i></a>
                                     <div id="panel" style="display:none;">
                                         <div class="checkbox">
-                                            <label><input name="check1" type="checkbox" value="1">Food 500 Baht</label>
+                                            <label><input name="check1" type="checkbox" value="1">I'd like a non-smoking room</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input name="check2" type="checkbox" value="1">Food 500 Baht</label>
+                                            <label><input name="check2" type="checkbox" value="1">I'd like a late check-in</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input name="check3" type="checkbox" value="1">Twin beds 100 Baht</label>
+                                            <label><input name="check3" type="checkbox" value="1">I'd like a large bed</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input name="check4" type="checkbox" value="1">Large bed 100 Baht</label>
+                                            <label><input name="check4" type="checkbox" value="1">I'd like twin beds</label>
                                         </div>
                                     </div>
                                 </div>
