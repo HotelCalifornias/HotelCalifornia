@@ -28,7 +28,7 @@
 
         <style>
             body{
-                background-image: url("http://eskipaper.com/images/aurora-wallpaper-10.jpg");
+                background-image: url("Photo/Room03.jpg");
             }
             .imgRoom{
                 width: 100%;
@@ -90,16 +90,16 @@
                                 <img class="imgblog imgRoom" src="Photo/${r.roomId}.jpg">
                             </div>
                             <div>
-                                <img class="imgblog imgRoom" src="http://d2f29brjr0xbt3.cloudfront.net/498_vintageroundup/oldcameras-14.jpg">
+                                <img class="imgblog imgRoom" src="Photo/35.jpg">
                             </div>
                             <div>
-                                <img class="imgblog imgRoom" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                                <img class="imgblog imgRoom" src="Photo/42.jpg">
                             </div>
                             <div>
-                                <img class="imgblog imgRoom" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                                <img class="imgblog imgRoom" src="Photo/51.jpg">
                             </div>
                             <div>
-                                <img class="imgblog imgRoom" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                                <img class="imgblog imgRoom" src="Photo/61.jpg">
                             </div>
                         </div>
                         <br>
@@ -108,16 +108,16 @@
                                 <img data-tab="tab-1" class="imgblog navImg current" src="Photo/${r.roomId}.jpg">
                             </div>
                             <div>
-                                <img data-tab="tab-2" class="imgblog navImg" src="http://d2f29brjr0xbt3.cloudfront.net/498_vintageroundup/oldcameras-14.jpg">
+                                <img data-tab="tab-2" class="imgblog navImg" src="Photo/35.jpg">
                             </div>
                             <div>
-                                <img data-tab="tab-3" class="imgblog navImg" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                                <img data-tab="tab-3" class="imgblog navImg" src="Photo/42.jpg">
                             </div>
                             <div>
-                                <img data-tab="tab-4" class="imgblog navImg" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                                <img data-tab="tab-4" class="imgblog navImg" src="Photo/51.jpg">
                             </div>
                             <div>
-                                <img data-tab="tab-5" class="imgblog navImg" src="http://camaracoleccion.es/imagenes/Nikon_F3_Canon.png">
+                                <img data-tab="tab-5" class="imgblog navImg" src="Photo/61.jpg">
                             </div>
                         </div>
 <!--                            <img id="imgRoom" class="imgblog" src="Photo/${r.roomId}.jpg">-->

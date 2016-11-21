@@ -155,7 +155,7 @@
 
                             </div>
                         </div>
-
+                    </div>
                         <div class="tabs is-centered">
                             <ul class="tabs">
                                 <li class="tab-link current" data-tab="tab-1"><a href="LoginAdminServlet#tab1">Room Detail</a></li>

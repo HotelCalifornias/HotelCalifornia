@@ -104,7 +104,7 @@
             <div class="fullwidth">
                 <div class="container-fluid">
                     <div class="row">
-                        <img class="imgbg" src="http://www.statravel.co.th/static/th_division_web_live2/assets/Careers-960x400-why-travel-til.jpg"/>
+                        <img class="imgbg" src="Photo/Header01.jpg"/>
                     </div>
                     <div class="row">
                         <form class="form-inline text-center topsearch" action="SearchHotelRooms" method="post">                          
@@ -143,11 +143,11 @@
                             </div>
                             <div class="col-md-9">
                                 <h1>Rooms ID :: ${r.roomId}</h1>
-                                <p>${r.roomName}</p>
-                                <p>${r.type}</p>
-                                <p>${r.capacity}</p>
-                                <p>${r.roomDes}</p>
-                                <p>${r.price}</p>
+                                <p>Room Name : ${r.roomName}</p>
+                                <p>Room Type : ${r.type}</p>
+                                <p>Capacity : ${r.capacity}</p>
+                                <p>Description : ${r.roomDes}</p>
+                                <p>Price : ${r.price}</p>
                             </div>
                         </div>
                     </a>

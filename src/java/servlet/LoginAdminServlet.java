@@ -66,7 +66,7 @@ public class LoginAdminServlet extends HttpServlet {
         }
         List<SearchHotelRooms> room2 = SearchHotelRooms.findEmtry();
         if (room2 == null) {
-            request.setAttribute("message", "Room dose not exist!");
+            request.setAttribute("message2", "Room dose not exist!");
         } else {
             session.setAttribute("roomH", room2);
             request.setAttribute("roomsH", room2);
